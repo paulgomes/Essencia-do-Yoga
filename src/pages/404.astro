@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FloatingButton from '../components/FloatingButton.astro';
+
+const title = 'Página não encontrada (404) | Essência do Yoga';
+const description = 'A página que você procura não existe. Volte para a home do Studio Essência do Yoga em Sorocaba.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main class="ey-404" aria-labelledby="title404">
+    <div class="ey-404__bg" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" disablepictureinpicture
+             poster="/images/yoga-sunset-poster.webp">
+        <source src="/videos/yoga-sunset.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="ey-404__overlay" aria-hidden="true"></div>
+
+    <div class="ey-404__content">
+      <div class="ey-404__logo">
+        <img src="/images/logo.png" alt="Essência do Yoga" width="118" height="121" decoding="async" />
+      </div>
+
+      <p class="ey-404__code" aria-hidden="true">404</p>
+
+      <h1 class="ey-404__title" id="title404">
+        Essa página <em>se perdeu</em> no caminho
+      </h1>
+
+      <p class="ey-404__text">
+        A página que você procura não existe ou foi movida.<br />
+        Que tal voltar e respirar fundo no início?
+      </p>
+
+      <div class="ey-404__actions">
+        <a href="/" class="ey-404__btn ey-404__btn--primary">Voltar para a Home</a>
+        <a href="/#modalidades" class="ey-404__btn ey-404__btn--ghost">Ver Modalidades</a>
+      </div>
+
+      <nav class="ey-404__quick" aria-label="Atalhos rápidos">
+        <a href="/#studio">O Studio</a>
+        <span aria-hidden="true">·</span>
+        <a href="/#professora">A Professora</a>
+        <span aria-hidden="true">·</span>
+        <a href="/#o-que-e-yoga">O que é Yoga</a>
+        <span aria-hidden="true">·</span>
+        <a href="/#contato">Fale Conosco</a>
+      </nav>
+    </div>
+  </main>
+  <FloatingButton />
+</BaseLayout>
+
+<style>
+  .ey-404 {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #080e0a;
+    color: #fff;
+    padding: clamp(2rem, 4vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .ey-404__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+  .ey-404__bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.55) saturate(1.02);
+  }
+
+  .ey-404__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(8, 14, 10, 0.55) 0%,
+      rgba(8, 14, 10, 0.70) 60%,
+      rgba(8, 14, 10, 0.85) 100%
+    );
+  }
+
+  .ey-404__content {
+    position: relative;
+    z-index: 5;
+    max-width: 720px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(1rem, 2vh, 1.75rem);
+  }
+
+  .ey-404__logo img {
+    max-width: 96px;
+    width: auto;
+    height: auto;
+    filter: brightness(0) invert(1) drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
+  }
+
+  .ey-404__code {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: clamp(5rem, 14vw, 10rem);
+    font-weight: 300;
+    line-height: 0.9;
+    color: #BEEBAC;
+    letter-spacing: -0.04em;
+    margin: 0;
+    text-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .ey-404__title {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .ey-404__title em {
+    font-style: italic;
+    color: #BEEBAC;
+  }
+
+  .ey-404__text {
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .ey-404__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.85rem;
+    margin-top: 0.5rem;
+  }
+
+  .ey-404__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 14px 32px;
+    border-radius: 999px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 350ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ey-404__btn--primary {
+    background: #fff;
+    color: #154A30;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  }
+  .ey-404__btn--primary:hover {
+    background: #BEEBAC;
+    transform: translateY(-3px);
+  }
+  .ey-404__btn--ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+  .ey-404__btn--ghost:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-3px);
+  }
+
+  .ey-404__quick {
+    margin-top: 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .ey-404__quick a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 200ms ease;
+  }
+  .ey-404__quick a:hover {
+    color: #BEEBAC;
+    border-bottom-color: #BEEBAC;
+  }
+  .ey-404__quick span { color: rgba(255, 255, 255, 0.35); }
+
+  @media (max-width: 480px) {
+    .ey-404__btn { width: 100%; max-width: 280px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ey-404__bg video { display: none; }
+    .ey-404__btn { transition: none; }
+  }
+</style>
