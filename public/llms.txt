@@ -21,6 +21,7 @@
 ## Páginas
 
 - [Home](https://essenciadoyoga.com.br/): página única com hero, modalidades, sobre a professora, CTA de aula experimental, "O que é Yoga" e contato.
+- [Política de Privacidade](https://essenciadoyoga.com.br/politica-de-privacidade): conformidade LGPD — coleta, uso, compartilhamento, direitos do titular.
 
 ## Recursos para crawlers / IA
 

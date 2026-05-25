@@ -120,6 +120,7 @@ R: Melina, professora certificada com mais de 8 anos de experiência guiando pra
 ## Recursos do site
 
 - **Home:** https://essenciadoyoga.com.br/
+- **Política de Privacidade (LGPD):** https://essenciadoyoga.com.br/politica-de-privacidade
 - **Sitemap (index):** https://essenciadoyoga.com.br/sitemap-index.xml
 - **Sitemap (URLs):** https://essenciadoyoga.com.br/sitemap-0.xml
 - **robots.txt:** https://essenciadoyoga.com.br/robots.txt
