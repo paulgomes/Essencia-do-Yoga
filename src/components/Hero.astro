@@ -59,7 +59,7 @@
     overflow: hidden;
     background: #080e0a;
     color: #fff !important;
-    padding: 42px 20px 56px;
+    padding: 42px clamp(1.5rem, 1rem + 3vw, 4rem) 56px;
   }
 
   #studio * { box-sizing: border-box; }
@@ -90,7 +90,7 @@
     position: relative;
     z-index: 5;
     width: 100%;
-    max-width: 980px;
+    max-width: 920px;
     text-align: center;
     transform: translateY(-12px);
   }
@@ -213,7 +213,7 @@
     #studio {
       min-height: calc(100vh - 64px);
       min-height: calc(100dvh - 64px);
-      padding: 44px 18px 48px;
+      padding: 44px clamp(1.25rem, 4vw, 1.75rem) 48px;
     }
     #studio .studio-hero__content { transform: none; }
     #studio .studio-hero__logo img { max-width: 88px; }
