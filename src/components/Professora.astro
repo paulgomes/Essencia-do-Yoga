@@ -1,19 +1,17 @@
 ---
 /*
-  Componente "Sobre a Professora" — E-E-A-T (Experience, Expertise,
-  Authoritativeness, Trustworthiness).
+  Componente "Sobre a Professora" — E-E-A-T.
+  Conteúdo usa apenas dados já presentes no site original:
+    - "Professora certificada" (Hero feature 03)
+    - "8+ anos de experiência" (Stats)
+    - "500+ alunos atendidos" (Stats)
+    - Modalidades: Adultos, Mamãe & Bebê, Kids (Modalidades section)
+    - Quote (QueEYoga blockquote)
 
-  CAMPOS PENDENTES (preencher com dados reais do cliente):
-    - [Nome da Professora]                  → no <em itemprop="name">
-    - [X] anos                              → no .ey-prof__lead
-    - [Nome da escola/formação]             → no .ey-prof__lead
-    - [Formação RYT-200 / Brahma Vidyalaya] → no <li> de credenciais
-    - [Especialização em Yoga Pré-natal]    → no <li>
-    - [Especialização em Yoga Infantil]     → no <li>
-    - [Frase da professora]                 → na <blockquote>
-
-  TODO: criar /images/professora.webp 600x750 (4:5) com foto real.
-  TODO: atualizar campo "name" do schema Person em BaseLayout.astro.
+  TODO opcional (preencher só se o cliente quiser personalizar):
+    - Nome real da professora → atualizar H2 e schema Person no BaseLayout
+    - Foto real /images/professora.webp 600x750
+    - Certificação específica (RYT-200 etc) se houver
 */
 ---
 
@@ -29,7 +27,7 @@
       <div class="ey-prof__photo">
         <img
           src="/images/professora.webp"
-          alt="[PREENCHER: NOME DA PROFESSORA], professora de yoga em Sorocaba e fundadora do Essência do Yoga"
+          alt="Professora certificada de yoga do Essência do Yoga em Sorocaba"
           width="600"
           height="750"
           loading="lazy"
@@ -40,20 +38,20 @@
       <div class="ey-prof__content">
         <p class="ey-prof__eyebrow">A Professora</p>
         <h2 class="ey-prof__title" id="profTitle">
-          Conheça <em itemprop="name">[PREENCHER: Nome da Professora]</em>
+          Uma <em itemprop="name">professora</em> que sabe o seu nome
         </h2>
         <p class="ey-prof__lead" itemprop="description">
-          Professora certificada de yoga em Sorocaba, com <strong>[PREENCHER: X] anos</strong> de experiência guiando praticantes de todas as idades. Formada em <strong>[PREENCHER: Nome da escola/formação]</strong>, acredita que o yoga é um caminho de transformação acessível a todos.
+          Professora certificada de yoga em Sorocaba, com <strong>mais de 8 anos</strong> de experiência guiando praticantes de todas as idades. No Essência do Yoga, cada aluno é recebido pelo nome — porque acreditamos que o yoga é um caminho de transformação pessoal acessível a todos, independente da idade ou condição física.
         </p>
-        <ul class="ey-prof__credentials" aria-label="Formação e certificações">
-          <li><span aria-hidden="true">✓</span><span itemprop="alumniOf">[PREENCHER: Formação RYT-200 / Brahma Vidyalaya / etc]</span></li>
-          <li><span aria-hidden="true">✓</span><span>[PREENCHER: Especialização em Yoga Pré-natal]</span></li>
-          <li><span aria-hidden="true">✓</span><span>[PREENCHER: Especialização em Yoga Infantil]</span></li>
-          <li><span aria-hidden="true">✓</span><span itemprop="knowsAbout">Hatha Yoga, Vinyasa, Pranayama e Meditação</span></li>
+        <ul class="ey-prof__credentials" aria-label="Experiência e práticas">
+          <li><span aria-hidden="true">✓</span><span>Professora certificada</span></li>
+          <li><span aria-hidden="true">✓</span><span>+8 anos de experiência guiando praticantes</span></li>
           <li><span aria-hidden="true">✓</span><span>+500 alunos atendidos em Sorocaba</span></li>
+          <li><span aria-hidden="true">✓</span><span itemprop="knowsAbout">Hatha Yoga, Vinyasa, Pranayama e Meditação</span></li>
+          <li><span aria-hidden="true">✓</span><span>3 modalidades: Yoga Adultos, Yoga Mamãe & Bebê e Yoga Kids</span></li>
         </ul>
         <blockquote class="ey-prof__quote">
-          "[PREENCHER: Frase da professora sobre sua filosofia de ensino]"
+          "Cada prática é um convite para respirar com consciência, cultivar presença e reencontrar a sua própria essência."
         </blockquote>
         <div class="ey-prof__cta">
           <a href="#contato" class="ey-prof__btn">Agendar Aula Experimental</a>
