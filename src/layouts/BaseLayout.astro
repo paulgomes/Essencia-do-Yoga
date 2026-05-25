@@ -77,17 +77,30 @@ const graphSchema = {
       "name": "Essência do Yoga",
       "legalName": "Essência do Yoga",
       "url": `${SITE}/`,
-      "logo": { "@id": `${SITE}/#logo` },
-      "image": { "@id": `${SITE}/#og-cover` },
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE}/images/logo.png`,
+        "width": 512,
+        "height": 512
+      },
+      "image": `${SITE}/images/og-cover.jpg`,
       "brand": { "@id": `${SITE}/#brand` },
+      "telephone": "+55-15-99133-1624",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Goiás, 117",
+        "addressLocality": "Sorocaba",
+        "addressRegion": "SP",
+        "postalCode": "18035-620",
+        "addressCountry": "BR"
+      },
       "sameAs": ["https://www.instagram.com/essencia_do_yoga/"],
       "contactPoint": [{
         "@type": "ContactPoint",
         "telephone": "+55-15-99133-1624",
         "contactType": "customer service",
         "areaServed": "BR",
-        "availableLanguage": ["Portuguese", "pt-BR"],
-        "contactOption": "TollFree"
+        "availableLanguage": "Portuguese"
       }]
     },
 
@@ -129,13 +142,20 @@ const graphSchema = {
       "logo": { "@id": `${SITE}/#logo` },
       "url": `${SITE}/`,
       "telephone": "+55-15-99133-1624",
-      "priceRange": "R$$",
+      "priceRange": "$$",
       "currenciesAccepted": "BRL",
       "paymentAccepted": ["Cash", "Credit Card", "Pix"],
       "brand": { "@id": `${SITE}/#brand` },
       "parentOrganization": { "@id": `${SITE}/#organization` },
       "location": { "@id": `${SITE}/#place` },
-      "address": { "@id": `${SITE}/#place` },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Goiás, 117",
+        "addressLocality": "Sorocaba",
+        "addressRegion": "SP",
+        "postalCode": "18035-620",
+        "addressCountry": "BR"
+      },
       "areaServed": [
         { "@type": "City", "name": "Sorocaba", "containedInPlace": { "@type": "State", "name": "São Paulo" } },
         { "@type": "City", "name": "Votorantim" },
@@ -160,10 +180,10 @@ const graphSchema = {
         "name": "Agendar Aula Experimental",
         "target": {
           "@type": "EntryPoint",
-          "urlTemplate": "https://wa.me/5515991331624?text=Olá! Gostaria de agendar uma aula experimental de yoga.",
+          "urlTemplate": "https://wa.me/5515991331624",
           "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform"
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform"
           ]
         }
       },
@@ -229,7 +249,9 @@ const graphSchema = {
       "copyrightYear": 2026
     },
 
-    /* ---------------- WebPage (Home) com speakable + breadcrumb ---------------- */
+    /* ---------------- WebPage (Home) com breadcrumb ---------------- */
+    /* speakable e ReadAction removidos: extensões Google que o
+       validator.schema.org não reconhece (mas Google Rich Results lê) */
     {
       "@type": "WebPage",
       "@id": `${SITE}/#webpage`,
@@ -239,35 +261,24 @@ const graphSchema = {
       "inLanguage": "pt-BR",
       "isPartOf": { "@id": `${SITE}/#website` },
       "about": { "@id": `${SITE}/#studio` },
-      "primaryImageOfPage": { "@id": `${SITE}/#og-cover` },
-      "breadcrumb": { "@id": `${SITE}/#breadcrumb` },
-      "datePublished": "2026-05-14",
-      "dateModified": new Date().toISOString().split('T')[0],
-      "speakable": {
-        "@type": "SpeakableSpecification",
-        "cssSelector": [
-          ".studio-hero__title",
-          ".studio-hero__description",
-          ".ey-mod__title",
-          ".ey-yoga__title"
-        ]
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": `${SITE}/images/og-cover.jpg`,
+        "width": 1600,
+        "height": 1600
       },
-      "potentialAction": [{
-        "@type": "ReadAction",
-        "target": [`${SITE}/`]
-      }]
-    },
-
-    /* ---------------- BreadcrumbList ---------------- */
-    {
-      "@type": "BreadcrumbList",
-      "@id": `${SITE}/#breadcrumb`,
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Início",
-        "item": `${SITE}/`
-      }]
+      "image": `${SITE}/images/og-cover.jpg`,
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [{
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": `${SITE}/`
+        }]
+      },
+      "datePublished": "2026-05-14",
+      "dateModified": new Date().toISOString().split('T')[0]
     },
 
     /* ---------------- VideoObject (hero) ---------------- */
