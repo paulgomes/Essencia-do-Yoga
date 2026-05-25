@@ -1,0 +1,256 @@
+---
+// Stats .ey-stats - reconstrução fiel
+---
+
+<section class="ey-stats" aria-label="Números do studio Essência do Yoga em Sorocaba">
+  <div class="ey-stats__container">
+
+    <p class="ey-stats__eyebrow">O Studio em Números</p>
+
+    <div class="ey-stats__inner">
+
+      <div class="ey-stats__item">
+        <span class="ey-stats__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <p class="ey-stats__value"><span data-counter data-target="500" data-suffix="+">0</span></p>
+        <span class="ey-stats__divider" aria-hidden="true"></span>
+        <p class="ey-stats__label">Alunos Atendidos</p>
+      </div>
+
+      <div class="ey-stats__item">
+        <span class="ey-stats__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>
+        </span>
+        <p class="ey-stats__value"><em><span data-counter data-target="8" data-suffix="+">0</span></em></p>
+        <span class="ey-stats__divider" aria-hidden="true"></span>
+        <p class="ey-stats__label">Anos de Experiência</p>
+      </div>
+
+      <div class="ey-stats__item">
+        <span class="ey-stats__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </span>
+        <p class="ey-stats__value"><span data-counter data-target="3">0</span></p>
+        <span class="ey-stats__divider" aria-hidden="true"></span>
+        <p class="ey-stats__label">Modalidades</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    'use strict';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function animateCounter(el: HTMLElement) {
+      const target = parseFloat(el.getAttribute('data-target') || '0') || 0;
+      const suffix = el.getAttribute('data-suffix') || '';
+      if (reduce) { el.textContent = target + suffix; return; }
+      const dur = 1800;
+      let start: number | null = null;
+      function step(ts: number) {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    const counters = document.querySelectorAll<HTMLElement>('[data-counter]');
+    if ('IntersectionObserver' in window) {
+      const co = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target as HTMLElement);
+            co.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach((el) => co.observe(el));
+    } else {
+      counters.forEach((el) => animateCounter(el));
+    }
+  })();
+</script>
+
+<style>
+  .ey-stats {
+    --green: #1D603E;
+    --green-deep: #154A30;
+    --green-dark: #0F1A12;
+    --lime: #BEEBAC;
+    --lilac: #CC6BE6;
+    --lilac-light: #E0A8EE;
+    --white: #FFFFFF;
+
+    --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+    --font-sans: 'Outfit', system-ui, sans-serif;
+
+    --fs-xs: clamp(0.68rem, 0.66rem + 0.12vw, 0.76rem);
+    --fs-lg: clamp(1.15rem, 1rem + 0.4vw, 1.35rem);
+
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    background: var(--green-dark) !important;
+    color: var(--white) !important;
+    padding: clamp(3.5rem, 3rem + 4vw, 7.5rem) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ey-stats *,
+  .ey-stats *::before,
+  .ey-stats *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .ey-stats::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+    background-size: 180px;
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ey-stats::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 10% 20%, rgba(190, 235, 172, 0.10), transparent),
+      radial-gradient(ellipse 50% 60% at 90% 80%, rgba(204, 107, 230, 0.06), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .ey-stats__container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+  }
+
+  .ey-stats__eyebrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--lilac-light) !important;
+    margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3.5rem);
+  }
+  .ey-stats__eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--lilac-light);
+  }
+
+  .ey-stats__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    text-align: center;
+  }
+
+  .ey-stats__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem clamp(0.75rem, 0.25rem + 1.5vw, 2.25rem);
+  }
+
+  .ey-stats__item:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 64%;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.12), transparent);
+  }
+
+  .ey-stats__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--lime) !important;
+    border: 1px solid rgba(190, 235, 172, 0.20);
+    background: rgba(190, 235, 172, 0.06);
+  }
+  .ey-stats__icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+    stroke: var(--lime) !important;
+  }
+
+  .ey-stats__value {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: clamp(2.8rem, 2rem + 3vw, 5rem);
+    line-height: 1;
+    color: var(--white) !important;
+    letter-spacing: -0.03em;
+  }
+  .ey-stats__value em {
+    color: var(--lime) !important;
+    font-style: italic;
+  }
+
+  .ey-stats__divider {
+    width: 36px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--lilac), transparent);
+    margin: 1rem auto 0.8rem;
+    opacity: 0.5;
+  }
+
+  .ey-stats__label {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: var(--fs-lg);
+    letter-spacing: 0.02em;
+    color: rgba(255, 255, 255, 0.72) !important;
+  }
+
+  @media (max-width: 860px) {
+    .ey-stats { padding: clamp(2.5rem, 2rem + 2vw, 3.5rem) 0; }
+    .ey-stats__eyebrow { margin-bottom: 1.75rem; }
+    .ey-stats__inner { grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .ey-stats__icon { display: none; }
+    .ey-stats__item { padding: 0.5rem 0.25rem; }
+    .ey-stats__item:not(:first-child)::before {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 60%;
+    }
+    .ey-stats__value { font-size: clamp(1.8rem, 1.4rem + 2vw, 2.6rem); }
+    .ey-stats__divider { width: 24px; margin: 0.6rem auto 0.5rem; }
+    .ey-stats__label { font-size: clamp(0.7rem, 0.65rem + 0.3vw, 0.88rem); }
+  }
+
+  @media (max-width: 380px) {
+    .ey-stats__value { font-size: 1.5rem; }
+    .ey-stats__label { font-size: 0.65rem; }
+  }
+</style>

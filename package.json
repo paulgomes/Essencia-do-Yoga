@@ -1,0 +1,16 @@
+{
+  "name": "essencia-do-yoga",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Site oficial do Studio Essência do Yoga - Sorocaba/SP",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^5.0.0",
+    "@astrojs/sitemap": "^3.2.0"
+  }
+}

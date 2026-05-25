@@ -1,0 +1,83 @@
+---
+// Botão Scrum - reconstrução fiel
+const formUrl = 'https://scrumboards.com.br/forms/1955c245-7e3e-45c4-aab2-1380896479cb';
+const supaHost = 'ssyghxuefgfckzzbfoyk.supabase.co';
+---
+
+<script define:vars={{ formUrl, supaHost }}>
+  (function(){
+    var open=false,overlay,prefetched=false;
+
+    function addHint(rel,href,co){var l=document.createElement('link');l.rel=rel;l.href=href;if(co)l.crossOrigin='anonymous';document.head.appendChild(l)}
+    addHint('preconnect','https://scrumboards.com.br',true);
+    addHint('dns-prefetch','https://scrumboards.com.br');
+    addHint('preconnect','https://'+supaHost,true);
+    addHint('dns-prefetch','https://'+supaHost);
+
+    function prefetchForm(){if(prefetched)return;prefetched=true;addHint('prefetch',formUrl)}
+
+    function openModal(){
+      if(open){overlay.remove();open=false;return;}
+      overlay=document.createElement('div');
+      overlay.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:10000;display:flex;align-items:center;justify-content:center;animation:fadeIn .2s;padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0)';
+      var modal=document.createElement('div');
+      modal.className='sc-modal';
+      modal.style.cssText='position:relative;width:94%;max-width:500px;height:85dvh;max-height:700px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 25px 50px rgba(0,0,0,.25);animation:slideUp .3s';
+      var close=document.createElement('button');
+      close.innerHTML='\u00d7';
+      close.setAttribute('aria-label','Fechar');
+      close.style.cssText='position:absolute;top:4px;right:4px;background:rgba(255,255,255,.85);border:none;font-size:24px;cursor:pointer;z-index:2;color:#666;width:44px;height:44px;display:flex;align-items:center;justify-content:center;line-height:1;border-radius:50%;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)';
+      close.onclick=function(){overlay.remove();open=false;};
+
+      var skel=document.createElement('div');
+      skel.className='sc-skel';
+      skel.style.cssText='position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;padding:16px;background:#fff';
+      skel.innerHTML='<div style="width:100%;max-width:400px"><div style="display:flex;justify-content:center;margin-bottom:16px"><div class="sc-pulse" style="height:64px;width:128px;border-radius:8px"></div></div><div style="display:flex;justify-content:center;margin-bottom:8px"><div class="sc-pulse" style="height:24px;width:75%;border-radius:4px"></div></div><div style="display:flex;justify-content:center;margin-bottom:24px"><div class="sc-pulse" style="height:16px;width:66%;border-radius:4px"></div></div><div style="display:flex;flex-direction:column;gap:20px"><div><div class="sc-pulse" style="height:16px;width:64px;border-radius:4px;margin-bottom:6px"></div><div class="sc-pulse" style="height:48px;width:100%;border-radius:6px"></div></div><div><div class="sc-pulse" style="height:16px;width:96px;border-radius:4px;margin-bottom:6px"></div><div class="sc-pulse" style="height:48px;width:100%;border-radius:6px"></div></div><div class="sc-pulse" style="height:48px;width:100%;border-radius:8px"></div></div></div>';
+
+      var iframe=document.createElement('iframe');
+      iframe.src=formUrl;
+      iframe.allow='popups popups-to-escape-sandbox';
+      iframe.setAttribute('loading','eager');
+      iframe.setAttribute('sandbox','allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin');
+      iframe.style.cssText='width:100%;height:100%;border:none;position:relative;z-index:0;opacity:0;transition:opacity .15s';
+      iframe.onload=function(){skel.remove();iframe.style.opacity='1'};
+
+      modal.appendChild(skel);
+      modal.appendChild(close);
+      modal.appendChild(iframe);
+      overlay.appendChild(modal);
+      overlay.onclick=function(e){if(e.target===overlay){overlay.remove();open=false;}};
+      document.body.appendChild(overlay);
+      open=true;
+    }
+
+    var btn=document.createElement('div');
+    btn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Fale Conosco';
+    btn.style.cssText='position:fixed;bottom:20px;right:20px;background:#0d9488;color:#ffffff;padding:14px 24px;border-radius:50px;cursor:pointer;font-family:sans-serif;font-size:15px;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:9999;display:flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;';
+    btn.onmouseenter=function(){btn.style.transform='scale(1.05)';btn.style.boxShadow='0 6px 20px rgba(0,0,0,.25)';prefetchForm()};
+    btn.onmouseleave=function(){btn.style.transform='scale(1)';btn.style.boxShadow='0 4px 14px rgba(0,0,0,.18)'};
+    btn.addEventListener('touchstart',prefetchForm,{passive:true,once:true});
+    btn.onclick=openModal;
+
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){prefetchForm();io.disconnect()}},{threshold:0});io.observe(btn)}
+
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('a[href="#contato"], a[href$="#contato"]');
+      if(!a)return;
+      e.preventDefault();
+      if(!open)openModal();
+    });
+
+    document.addEventListener('mouseover',function(e){
+      var a=e.target.closest&&e.target.closest('a[href="#contato"], a[href$="#contato"]');
+      if(a)prefetchForm();
+    });
+
+    if(window.location.hash==='#contato'){openModal();}
+
+    var style=document.createElement('style');
+    style.textContent='@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes scPulse{0%,100%{opacity:1}50%{opacity:.5}}.sc-pulse{background:#e2e8f0;animation:scPulse 2s ease-in-out infinite}@media(max-width:480px){.sc-modal{max-height:none!important;height:92dvh!important;width:100%!important;border-radius:14px 14px 0 0!important;align-self:flex-end}}@media(min-width:481px) and (max-width:768px){.sc-modal{width:90%!important;max-width:460px!important}}@media(min-width:769px){.sc-modal{max-width:520px!important;height:80dvh!important;max-height:720px!important}}';
+    document.head.appendChild(style);
+    document.body.appendChild(btn);
+  })();
+</script>

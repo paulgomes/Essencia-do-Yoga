@@ -1,0 +1,202 @@
+---
+// CTA .ey-cta - reconstrução fiel
+---
+
+<section class="ey-cta" aria-label="Agendar aula experimental de yoga em Sorocaba">
+
+  <div class="ey-cta__bg" aria-hidden="true"></div>
+  <div class="ey-cta__overlay" aria-hidden="true"></div>
+
+  <div class="ey-cta__container">
+    <div class="ey-cta__inner">
+
+      <p class="ey-cta__eyebrow">Aula Experimental</p>
+
+      <h2 class="ey-cta__title">
+        Vamos juntos nessa caminhada de <em>evolução</em> e transformação?
+      </h2>
+
+      <p class="ey-cta__text">
+        Agende sua aula experimental e descubra como o Yoga pode mudar a sua relação com o corpo, a mente e a respiração.
+      </p>
+
+      <a href="#contato" target="_blank" rel="noopener" class="ey-cta__btn" aria-label="Agendar aula experimental pelo WhatsApp">
+        <span>Agendar Aula Experimental</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .ey-cta {
+    --green-deep: #154A30;
+    --lime: #BEEBAC;
+    --lilac-light: #E0A8EE;
+
+    --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+    --font-sans: 'Outfit', system-ui, sans-serif;
+
+    --fs-xs: clamp(0.68rem, 0.66rem + 0.12vw, 0.76rem);
+    --fs-sm: clamp(0.82rem, 0.8rem + 0.14vw, 0.92rem);
+    --fs-base: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
+    --fs-2xl: clamp(2rem, 1.4rem + 2.4vw, 3.4rem);
+
+    --r-pill: 999px;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+    position: relative;
+    padding: clamp(4rem, 3rem + 4vw, 7rem) 0;
+    overflow: hidden;
+    background: #0a1f10;
+  }
+
+  .ey-cta *,
+  .ey-cta *::before,
+  .ey-cta *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .ey-cta__bg {
+    position: absolute;
+    inset: -60px 0;
+    background-image: url("/images/cta-bg.webp");
+    background-size: cover;
+    background-position: center 40%;
+    background-attachment: fixed;
+    z-index: 0;
+  }
+
+  .ey-cta__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 31, 16, 0.85) 0%,
+      rgba(21, 74, 48, 0.80) 50%,
+      rgba(10, 31, 16, 0.88) 100%
+    );
+    z-index: 1;
+  }
+
+  .ey-cta__container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
+  }
+
+  .ey-cta__inner {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .ey-cta__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-xs);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E0A8EE !important;
+  }
+  .ey-cta__eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: #E0A8EE !important;
+  }
+
+  .ey-cta__title {
+    font-family: var(--font-serif);
+    font-weight: 300;
+    font-size: var(--fs-2xl);
+    line-height: 1.1;
+    color: #FFFFFF !important;
+    margin: 1.25rem 0 1rem;
+    text-wrap: balance;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+  }
+
+  .ey-cta__title em {
+    font-style: italic;
+    color: #BEEBAC !important;
+  }
+
+  .ey-cta__text {
+    font-family: var(--font-sans);
+    font-size: var(--fs-base);
+    color: #FFFFFF !important;
+    opacity: 0.92;
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.22);
+  }
+
+  .ey-cta__btn,
+  .ey-cta__btn:visited,
+  .ey-cta__btn:link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 50px;
+    padding: 0.9rem 1.8rem;
+    border-radius: var(--r-pill);
+    background: #FFFFFF !important;
+    color: #154A30 !important;
+    font-family: var(--font-sans);
+    font-size: var(--fs-sm);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    transition: all 400ms var(--ease);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  }
+  .ey-cta__btn:hover,
+  .ey-cta__btn:focus-visible {
+    transform: translateY(-3px);
+    background: #BEEBAC !important;
+    color: #154A30 !important;
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.24);
+  }
+  .ey-cta__btn svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    transition: transform 300ms var(--ease);
+    stroke: #154A30 !important;
+  }
+  .ey-cta__btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .ey-cta { padding: clamp(3rem, 2.5rem + 2vw, 4.5rem) 0; }
+    .ey-cta__bg {
+      background-attachment: scroll;
+      background-position: center center;
+      inset: 0;
+    }
+    .ey-cta__title { font-size: clamp(1.65rem, 1.3rem + 1.6vw, 2.2rem) !important; }
+    .ey-cta__text { font-size: 0.92rem; margin-bottom: 1.75rem; }
+    .ey-cta__btn { width: 100%; max-width: 320px; }
+  }
+
+  @media (max-width: 380px) {
+    .ey-cta { padding: 2.5rem 0; }
+    .ey-cta__title { font-size: 1.5rem !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ey-cta__bg { background-attachment: scroll; }
+    .ey-cta__btn { transition: none; }
+  }
+</style>
