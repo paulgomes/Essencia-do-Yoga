@@ -1,0 +1,173 @@
+---
+/*
+  Componente "Sobre a Professora" — E-E-A-T (Experience, Expertise,
+  Authoritativeness, Trustworthiness).
+
+  CAMPOS PENDENTES (preencher com dados reais do cliente):
+    - [Nome da Professora]                  → no <em itemprop="name">
+    - [X] anos                              → no .ey-prof__lead
+    - [Nome da escola/formação]             → no .ey-prof__lead
+    - [Formação RYT-200 / Brahma Vidyalaya] → no <li> de credenciais
+    - [Especialização em Yoga Pré-natal]    → no <li>
+    - [Especialização em Yoga Infantil]     → no <li>
+    - [Frase da professora]                 → na <blockquote>
+
+  TODO: criar /images/professora.webp 600x750 (4:5) com foto real.
+  TODO: atualizar campo "name" do schema Person em BaseLayout.astro.
+*/
+---
+
+<section
+  id="professora"
+  class="ey-prof"
+  aria-labelledby="profTitle"
+  itemscope
+  itemtype="https://schema.org/Person"
+>
+  <div class="ey-prof__container">
+    <div class="ey-prof__box">
+      <div class="ey-prof__photo">
+        <img
+          src="/images/professora.webp"
+          alt="[PREENCHER: NOME DA PROFESSORA], professora de yoga em Sorocaba e fundadora do Essência do Yoga"
+          width="600"
+          height="750"
+          loading="lazy"
+          decoding="async"
+          itemprop="image"
+        />
+      </div>
+      <div class="ey-prof__content">
+        <p class="ey-prof__eyebrow">A Professora</p>
+        <h2 class="ey-prof__title" id="profTitle">
+          Conheça <em itemprop="name">[PREENCHER: Nome da Professora]</em>
+        </h2>
+        <p class="ey-prof__lead" itemprop="description">
+          Professora certificada de yoga em Sorocaba, com <strong>[PREENCHER: X] anos</strong> de experiência guiando praticantes de todas as idades. Formada em <strong>[PREENCHER: Nome da escola/formação]</strong>, acredita que o yoga é um caminho de transformação acessível a todos.
+        </p>
+        <ul class="ey-prof__credentials" aria-label="Formação e certificações">
+          <li><span aria-hidden="true">✓</span><span itemprop="alumniOf">[PREENCHER: Formação RYT-200 / Brahma Vidyalaya / etc]</span></li>
+          <li><span aria-hidden="true">✓</span><span>[PREENCHER: Especialização em Yoga Pré-natal]</span></li>
+          <li><span aria-hidden="true">✓</span><span>[PREENCHER: Especialização em Yoga Infantil]</span></li>
+          <li><span aria-hidden="true">✓</span><span itemprop="knowsAbout">Hatha Yoga, Vinyasa, Pranayama e Meditação</span></li>
+          <li><span aria-hidden="true">✓</span><span>+500 alunos atendidos em Sorocaba</span></li>
+        </ul>
+        <blockquote class="ey-prof__quote">
+          "[PREENCHER: Frase da professora sobre sua filosofia de ensino]"
+        </blockquote>
+        <div class="ey-prof__cta">
+          <a href="#contato" class="ey-prof__btn">Agendar Aula Experimental</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ey-prof {
+    padding-block: clamp(48px, 8vh, 96px);
+    background: #faf7f2;
+  }
+  .ey-prof__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: clamp(20px, 5vw, 48px);
+  }
+  .ey-prof__box {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+  }
+  .ey-prof__photo {
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .ey-prof__photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .ey-prof__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #154A30;
+    margin: 0 0 12px;
+  }
+  .ey-prof__title {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    margin: 0 0 16px;
+    line-height: 1.2;
+    font-weight: 300;
+  }
+  .ey-prof__title em {
+    font-style: italic;
+    font-weight: 500;
+    color: #154A30;
+  }
+  .ey-prof__lead {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    margin: 0 0 24px;
+  }
+  .ey-prof__credentials {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .ey-prof__credentials li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+  }
+  .ey-prof__credentials span[aria-hidden] {
+    color: #154A30;
+    font-weight: 700;
+  }
+  .ey-prof__quote {
+    font-style: italic;
+    padding: 16px 20px;
+    border-left: 3px solid #154A30;
+    background: rgba(21, 74, 48, 0.04);
+    margin: 0 0 24px;
+    line-height: 1.6;
+  }
+  .ey-prof__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+  .ey-prof__btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    background: #154A30;
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 0.9375rem;
+    letter-spacing: 0.05em;
+    transition: opacity 200ms ease;
+  }
+  .ey-prof__btn:hover {
+    opacity: 0.9;
+  }
+  @media (max-width: 900px) {
+    .ey-prof__box {
+      grid-template-columns: 1fr;
+    }
+    .ey-prof__photo {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+</style>
