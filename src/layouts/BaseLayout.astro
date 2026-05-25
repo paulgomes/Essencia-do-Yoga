@@ -7,14 +7,20 @@ export interface Props {
 }
 
 const {
-  title = 'Yoga em Sorocaba | Essência do Yoga — Hatha, Vinyasa, Kids e Mamãe & Bebê',
-  description = 'Studio de yoga em Sorocaba/SP no Centro. Turmas pequenas, professora certificada e horários flexíveis. Aulas de Hatha, Vinyasa, Yoga Kids e Mamãe & Bebê. Agende sua aula experimental.',
+  title = 'Yoga em Sorocaba | Essência do Yoga — Studio no Centro',
+  description = 'Yoga em Sorocaba no Studio Essência: turmas pequenas, professora certificada e horários flexíveis. Aulas de Hatha, Vinyasa, Yoga Kids e Mamãe & Bebê no Centro. Agende sua aula experimental.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
-// TODO: criar /images/og-cover.jpg (1200x630) dedicado para OG/Twitter
+// TODO: criar /images/og-cover.jpg (1200x630, JPG, <300KB, com zona segura central 1080x540)
 const ogImage = new URL('/images/og-cover.jpg', Astro.site).href;
-const keywords = 'yoga sorocaba, studio yoga sorocaba, aulas de yoga sorocaba, hatha yoga sorocaba, vinyasa sorocaba, yoga kids sorocaba, yoga mamãe e bebê, meditação sorocaba, essência do yoga, yoga centro sorocaba';
+const keywords = 'yoga em sorocaba, yoga sorocaba, studio de yoga em sorocaba, aulas de yoga sorocaba, hatha yoga sorocaba, vinyasa sorocaba, yoga kids sorocaba, yoga mamãe e bebê sorocaba, yoga centro sorocaba, essência do yoga';
+
+// Variantes mais curtas pra OG/Twitter (que truncam em ~60 chars no title e ~125-150 no description)
+const ogTitle = 'Yoga em Sorocaba | Essência do Yoga';
+const ogDescription = 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis. Hatha, Vinyasa, Yoga Kids e Mamãe & Bebê.';
+const twitterDescription = 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis.';
+const ogImageAlt = 'Studio Essência do Yoga — Yoga em Sorocaba no Centro';
 
 // Bloco 1 — Grafo principal (Organization + LocalBusiness/YogaStudio + WebSite + Person)
 // NOTA: aggregateRating intencionalmente omitido. Só adicionar quando houver
@@ -41,7 +47,7 @@ const graphSchema = {
       "@id": "https://essenciadoyoga.com.br/#studio",
       "name": "Essência do Yoga",
       "alternateName": "Studio Essência do Yoga",
-      "description": "Studio de yoga em Sorocaba/SP com turmas pequenas, horários flexíveis e atendimento personalizado. Aulas de Hatha, Vinyasa, Yoga Kids, Yoga Mamãe & Bebê e meditação no Centro de Sorocaba.",
+      "description": "Yoga em Sorocaba no Studio Essência: turmas pequenas, professora certificada e horários flexíveis. Aulas de Hatha, Vinyasa, Yoga Kids e Yoga Mamãe & Bebê no Centro de Sorocaba.",
       "image": [
         "https://essenciadoyoga.com.br/images/yoga-studio.webp",
         "https://essenciadoyoga.com.br/images/yoga-adultos.webp",
@@ -218,31 +224,31 @@ const faqSchema = {
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:site_name" content="Essência do Yoga" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
+  <meta property="og:title" content={ogTitle} />
+  <meta property="og:description" content={ogDescription} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:secure_url" content={ogImage} />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Studio Essência do Yoga em Sorocaba" />
+  <meta property="og:image:alt" content={ogImageAlt} />
 
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:title" content={ogTitle} />
+  <meta name="twitter:description" content={twitterDescription} />
   <meta name="twitter:image" content={ogImage} />
-  <meta name="twitter:image:alt" content="Studio Essência do Yoga em Sorocaba" />
+  <meta name="twitter:image:alt" content="Studio Essência do Yoga — Yoga em Sorocaba" />
 
   <!-- GEO / Local SEO -->
   <meta name="geo.region" content="BR-SP" />
   <meta name="geo.placename" content="Sorocaba, São Paulo, Brasil" />
   <meta name="geo.position" content="-23.5015;-47.4526" />
   <meta name="ICBM" content="-23.5015, -47.4526" />
-  <meta name="DC.title" content={title} />
+  <meta name="DC.title" content={ogTitle} />
   <meta name="DC.creator" content="Essência do Yoga" />
-  <meta name="DC.subject" content="Yoga em Sorocaba" />
+  <meta name="DC.subject" content="Yoga em Sorocaba, Studio de Yoga, Hatha, Vinyasa, Yoga Kids" />
   <meta name="DC.coverage" content="Sorocaba, SP, Brasil" />
   <meta name="DC.language" content="pt-BR" />
 
