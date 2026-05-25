@@ -121,9 +121,9 @@ const graphSchema = {
         { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-pranayama" }
       ],
       "makesOffer": [
-        { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-adultos" },
-        { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-mamae-bebe" },
-        { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-kids" }
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-adultos" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-mamae-bebe" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-kids" } }
       ]
     },
     {
@@ -135,11 +135,7 @@ const graphSchema = {
       "provider": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" },
       "areaServed": { "@type": "City", "name": "Sorocaba" },
       "audience": { "@type": "PeopleAudience", "suggestedMinAge": 18 },
-      "image": "https://essenciadoyoga.com.br/images/yoga-adultos.webp",
-      "about": [
-        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-hatha" },
-        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-vinyasa" }
-      ]
+      "image": "https://essenciadoyoga.com.br/images/yoga-adultos.webp"
     },
     {
       "@type": "Service",
