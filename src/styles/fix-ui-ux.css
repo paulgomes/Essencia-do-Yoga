@@ -25,6 +25,35 @@ svg {
   display: block !important;
 }
 
+/* Logo do hero — tamanho fixo, vence o max-width: 100% acima */
+.studio-hero__logo img {
+  max-width: 118px !important;
+  width: 118px !important;
+  height: auto !important;
+  margin: 0 auto !important;
+}
+
+@media (max-width: 768px) {
+  .studio-hero__logo img {
+    max-width: 88px !important;
+    width: 88px !important;
+  }
+}
+
+/* Logo do footer */
+.ey-footer__logo img {
+  max-width: 48px !important;
+  width: 48px !important;
+  height: 48px !important;
+}
+
+/* Logo do seal em "O que é Yoga" */
+.ey-yoga__seal img {
+  max-width: 36px !important;
+  width: 36px !important;
+  height: 36px !important;
+}
+
 /* ---------- 1. CONTAINER PADRÃO ---------- */
 .ey-stats__container,
 .ey-mod__container,
