@@ -111,7 +111,7 @@
     --fs-xs: clamp(0.7rem, 0.68rem + 0.12vw, 0.78rem);
     --fs-sm: clamp(0.82rem, 0.8rem + 0.14vw, 0.92rem);
     --fs-base: clamp(0.95rem, 0.92rem + 0.18vw, 1.05rem);
-    --fs-2xl: clamp(1.9rem, 1.4rem + 2.2vw, 3rem);
+    --fs-2xl: clamp(2.2rem, 1.5rem + 2.8vw, 3.8rem);
 
     --gutter: clamp(1.25rem, 0.8rem + 2vw, 2.5rem);
     --r-lg: 28px;
@@ -121,7 +121,7 @@
     --shadow-lg: 0 24px 64px rgba(15, 26, 18, 0.14);
     --ease: cubic-bezier(0.22, 1, 0.36, 1);
 
-    padding: clamp(3.5rem, 3rem + 2.5vw, 6rem) 0;
+    padding: clamp(5rem, 4rem + 5vw, 9rem) 0;
     background: var(--white);
     scroll-margin-top: 80px;
   }
@@ -140,9 +140,9 @@
   .ey-mod__header {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
-    gap: clamp(1.5rem, 1rem + 2vw, 3rem);
+    gap: clamp(2rem, 1rem + 3vw, 4rem);
     align-items: end;
-    margin-bottom: clamp(2.25rem, 1.75rem + 2vw, 3.5rem);
+    margin-bottom: clamp(3.5rem, 2.5rem + 3vw, 6rem);
   }
 
   .ey-mod__eyebrow {
@@ -188,11 +188,8 @@
 
   .ey-mod__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: clamp(1rem, 0.8rem + 0.8vw, 1.5rem);
-  }
-  @media (min-width: 1024px) {
-    .ey-mod__grid { grid-template-columns: repeat(4, 1fr); }
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
   }
 
   .ey-mod-card {
@@ -211,7 +208,7 @@
 
   .ey-mod-card__media {
     position: relative;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 10;
     overflow: hidden;
   }
   .ey-mod-card__media img {
@@ -249,7 +246,7 @@
   }
 
   .ey-mod-card__body {
-    padding: clamp(1.15rem, 0.9rem + 0.6vw, 1.5rem);
+    padding: clamp(1.5rem, 1rem + 1vw, 2.25rem);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -258,18 +255,18 @@
   .ey-mod-card__title {
     font-family: var(--font-serif);
     font-weight: 400;
-    font-size: clamp(1.15rem, 1rem + 0.4vw, 1.4rem);
+    font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.65rem);
     letter-spacing: -0.01em;
     color: var(--ink) !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
 
   .ey-mod-card__desc {
     color: var(--ink-soft) !important;
     font-family: var(--font-sans);
     font-size: var(--fs-sm);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.35rem;
     flex: 1;
   }
 
@@ -322,15 +319,15 @@
   @media (max-width: 860px) {
     .ey-mod__header {
       grid-template-columns: 1fr;
-      gap: 1rem;
+      gap: 1.25rem;
     }
     .ey-mod__intro { justify-self: start; max-width: 100%; }
+    .ey-mod__grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 480px) {
-    .ey-mod { padding: clamp(3rem, 2.5rem + 1.5vw, 4rem) 0; }
-    .ey-mod__grid { grid-template-columns: 1fr; gap: 1rem; }
-    .ey-mod-card__body { padding: 1.15rem; }
+    .ey-mod { padding: clamp(3.5rem, 3rem + 2vw, 5rem) 0; }
+    .ey-mod-card__body { padding: 1.25rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
