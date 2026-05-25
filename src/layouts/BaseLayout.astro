@@ -22,164 +22,229 @@ const ogDescription = 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, pr
 const twitterDescription = 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis.';
 const ogImageAlt = 'Studio Essência do Yoga — Yoga em Sorocaba no Centro';
 
-// Bloco 1 — LocalBusiness/YogaStudio simplificado (passa no validator.schema.org)
+// Schema.org @graph consolidado — todas entidades conectadas via @id
 // NOTA: aggregateRating omitido intencionalmente. Adicionar só quando houver
 // reviews reais no Google Business Profile (inventar viola diretrizes do Google).
-const localBusinessSchema = {
+// YogaStudio substituído por SportsActivityLocation (YogaStudio não existe no schema.org oficial).
+const graphSchema = {
   "@context": "https://schema.org",
-  "@type": ["LocalBusiness", "HealthAndBeautyBusiness", "SportsActivityLocation"],
-  "@id": "https://essenciadoyoga.com.br/#studio",
-  "name": "Essência do Yoga",
-  "alternateName": "Studio Essência do Yoga",
-  "description": "Studio de yoga em Sorocaba com turmas pequenas, horários flexíveis e atendimento personalizado. Aulas de Hatha, Vinyasa, Yoga Kids, Yoga Mamãe & Bebê e meditação no coração da cidade.",
-  "image": [
+  "@graph": [
     {
-      "@type": "ImageObject",
-      "url": "https://essenciadoyoga.com.br/images/logo.png",
-      "width": 512,
-      "height": 512,
-      "caption": "Logo Essência do Yoga"
+      "@type": "Organization",
+      "@id": "https://essenciadoyoga.com.br/#organization",
+      "name": "Essência do Yoga",
+      "url": "https://essenciadoyoga.com.br/",
+      "logo": {
+        "@type": "ImageObject",
+        "@id": "https://essenciadoyoga.com.br/#logo",
+        "url": "https://essenciadoyoga.com.br/images/logo.png",
+        "contentUrl": "https://essenciadoyoga.com.br/images/logo.png",
+        "width": 512,
+        "height": 512,
+        "caption": "Essência do Yoga"
+      },
+      "sameAs": ["https://www.instagram.com/essencia_do_yoga/"]
     },
-    "https://essenciadoyoga.com.br/images/yoga-studio.webp"
-  ],
-  "logo": "https://essenciadoyoga.com.br/images/logo.png",
-  "url": "https://essenciadoyoga.com.br/",
-  "telephone": "+55-15-99133-1624",
-  "priceRange": "R$",
-  "currenciesAccepted": "BRL",
-  "paymentAccepted": ["Cash", "Credit Card", "Pix"],
-  "areaServed": [
-    { "@type": "City", "name": "Sorocaba" },
-    { "@type": "AdministrativeArea", "name": "Região Metropolitana de Sorocaba" }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua Goiás, 117",
-    "addressLocality": "Sorocaba",
-    "addressRegion": "SP",
-    "postalCode": "18035-620",
-    "addressCountry": "BR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -23.5015,
-    "longitude": -47.4526
-  },
-  "hasMap": "https://maps.app.goo.gl/bCnMqvaWc7wVodJf6",
-  "openingHoursSpecification": [{
-    "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "07:00",
-    "closes": "21:00"
-  }],
-  "sameAs": ["https://www.instagram.com/essencia_do_yoga/"],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Modalidades de Yoga",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "url": "https://essenciadoyoga.com.br/#modalidades",
-        "availability": "https://schema.org/InStock",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Yoga Adultos",
-          "description": "Aulas de yoga para adultos que equilibram mente e corpo, promovendo disposição e bem-estar.",
-          "serviceType": "Aulas de Yoga",
-          "url": "https://essenciadoyoga.com.br/#contato",
-          "image": "https://essenciadoyoga.com.br/images/yoga-adultos.webp",
-          "provider": { "@id": "https://essenciadoyoga.com.br/#studio" },
-          "areaServed": { "@type": "City", "name": "Sorocaba" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "url": "https://essenciadoyoga.com.br/#modalidades",
-        "availability": "https://schema.org/InStock",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Yoga Mamãe & Bebê",
-          "description": "Um momento especial para fortalecer o vínculo entre mãe e filho. Práticas leves que ajudam na recuperação pós-parto e trazem serenidade.",
-          "serviceType": "Yoga pós-parto",
-          "url": "https://essenciadoyoga.com.br/#contato",
-          "image": "https://essenciadoyoga.com.br/images/yoga-mamae-bebe.webp",
-          "provider": { "@id": "https://essenciadoyoga.com.br/#studio" },
-          "areaServed": { "@type": "City", "name": "Sorocaba" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "url": "https://essenciadoyoga.com.br/#modalidades",
-        "availability": "https://schema.org/InStock",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Yoga Kids",
-          "description": "Brincar, respirar e se movimentar com consciência. O Yoga Kids estimula concentração, criatividade e equilíbrio emocional das crianças.",
-          "serviceType": "Yoga infantil",
-          "url": "https://essenciadoyoga.com.br/#contato",
-          "image": "https://essenciadoyoga.com.br/images/yoga-kids.webp",
-          "provider": { "@id": "https://essenciadoyoga.com.br/#studio" },
-          "areaServed": { "@type": "City", "name": "Sorocaba" }
-        }
-      },
-      {
-        "@type": "Offer",
-        "url": "https://essenciadoyoga.com.br/#modalidades",
-        "availability": "https://schema.org/InStock",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "O Yoga é para Todos",
-          "description": "Independentemente da idade ou experiência, o Yoga acolhe cada corpo e cada ritmo. Uma prática inclusiva que convida à leveza e à harmonia.",
-          "serviceType": "Aulas de Yoga inclusivas",
-          "url": "https://essenciadoyoga.com.br/#contato",
-          "image": "https://essenciadoyoga.com.br/images/yoga-todos.webp",
-          "provider": { "@id": "https://essenciadoyoga.com.br/#studio" },
-          "areaServed": { "@type": "City", "name": "Sorocaba" }
-        }
+    {
+      "@type": "WebSite",
+      "@id": "https://essenciadoyoga.com.br/#website",
+      "url": "https://essenciadoyoga.com.br/",
+      "name": "Essência do Yoga",
+      "description": "Studio de yoga em Sorocaba",
+      "publisher": { "@type": "Organization", "@id": "https://essenciadoyoga.com.br/#organization" },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://essenciadoyoga.com.br/#webpage",
+      "url": "https://essenciadoyoga.com.br/",
+      "name": "Yoga em Sorocaba | Essência do Yoga",
+      "isPartOf": { "@type": "WebSite", "@id": "https://essenciadoyoga.com.br/#website" },
+      "about": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" },
+      "primaryImageOfPage": { "@type": "ImageObject", "@id": "https://essenciadoyoga.com.br/#logo" },
+      "inLanguage": "pt-BR",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".studio-hero__description"]
       }
-    ]
-  }
-};
-
-// Bloco 2 — FAQPage expandida
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Onde fica o Studio Essência do Yoga em Sorocaba?",
-      "acceptedAnswer": { "@type": "Answer", "text": "O Essência do Yoga fica na Rua Goiás, 117, Centro, Sorocaba/SP — próximo ao coração da cidade, com fácil acesso e estacionamento na região." }
     },
     {
-      "@type": "Question",
-      "name": "Quais modalidades de yoga são oferecidas em Sorocaba?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Oferecemos Yoga para Adultos (Hatha e Vinyasa), Yoga Mamãe & Bebê para o pós-parto e Yoga Kids para crianças. Todas as aulas são pensadas para cada momento da vida, com turmas pequenas e atendimento personalizado." }
+      "@type": ["LocalBusiness", "HealthAndBeautyBusiness", "SportsActivityLocation"],
+      "@id": "https://essenciadoyoga.com.br/#studio",
+      "name": "Essência do Yoga",
+      "alternateName": "Studio Essência do Yoga",
+      "description": "Studio de yoga em Sorocaba/SP com turmas pequenas, horários flexíveis e atendimento personalizado. Aulas de Hatha, Vinyasa, Yoga Kids, Yoga Mamãe & Bebê e meditação no Centro de Sorocaba.",
+      "image": { "@type": "ImageObject", "@id": "https://essenciadoyoga.com.br/#logo" },
+      "logo": { "@type": "ImageObject", "@id": "https://essenciadoyoga.com.br/#logo" },
+      "url": "https://essenciadoyoga.com.br/",
+      "telephone": "+55-15-99133-1624",
+      "priceRange": "R$",
+      "currenciesAccepted": "BRL",
+      "paymentAccepted": ["Cash", "Credit Card", "Pix"],
+      "parentOrganization": { "@type": "Organization", "@id": "https://essenciadoyoga.com.br/#organization" },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Sorocaba",
+          "sameAs": "https://www.wikidata.org/wiki/Q201794",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "São Paulo",
+            "sameAs": "https://www.wikidata.org/wiki/Q175"
+          }
+        },
+        { "@type": "City", "name": "Votorantim" },
+        { "@type": "City", "name": "Itu" },
+        { "@type": "AdministrativeArea", "name": "Região Metropolitana de Sorocaba" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Goiás, 117",
+        "addressLocality": "Sorocaba",
+        "addressRegion": "SP",
+        "postalCode": "18035-620",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -23.5015, "longitude": -47.4526 },
+      "hasMap": "https://maps.app.goo.gl/bCnMqvaWc7wVodJf6",
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "07:00",
+        "closes": "21:00"
+      }],
+      "sameAs": ["https://www.instagram.com/essencia_do_yoga/"],
+      "knowsAbout": [
+        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-hatha" },
+        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-vinyasa" },
+        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-meditacao" },
+        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-pranayama" }
+      ],
+      "makesOffer": [
+        { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-adultos" },
+        { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-mamae-bebe" },
+        { "@type": "Service", "@id": "https://essenciadoyoga.com.br/#service-kids" }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Como agendar uma aula experimental de yoga?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Para agendar sua aula experimental, entre em contato pelo WhatsApp (15) 99133-1624 ou clique no botão 'Fale Conosco' no site. A primeira aula é uma oportunidade para conhecer o studio sem compromisso." }
+      "@type": ["Service", "Course"],
+      "@id": "https://essenciadoyoga.com.br/#service-adultos",
+      "name": "Yoga para Adultos em Sorocaba",
+      "serviceType": "Aulas de Yoga",
+      "description": "Aulas de yoga para adultos que equilibram mente e corpo, fortalecem a musculatura, aliviam o estresse e promovem disposição e bem-estar.",
+      "provider": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" },
+      "areaServed": { "@type": "City", "name": "Sorocaba" },
+      "audience": { "@type": "PeopleAudience", "suggestedMinAge": 18 },
+      "image": "https://essenciadoyoga.com.br/images/yoga-adultos.webp",
+      "about": [
+        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-hatha" },
+        { "@type": "Thing", "@id": "https://essenciadoyoga.com.br/#concept-vinyasa" }
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Quais os horários do studio de yoga?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Funcionamos de segunda a sábado, das 07h às 21h, com horários flexíveis ao longo do dia." }
+      "@type": ["Service", "Course"],
+      "@id": "https://essenciadoyoga.com.br/#service-mamae-bebe",
+      "name": "Yoga Mamãe & Bebê em Sorocaba",
+      "serviceType": "Yoga pós-parto",
+      "description": "Práticas leves de yoga para mães no pós-parto que fortalecem o vínculo com o bebê, auxiliam na recuperação e trazem serenidade.",
+      "provider": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" },
+      "areaServed": { "@type": "City", "name": "Sorocaba" },
+      "image": "https://essenciadoyoga.com.br/images/yoga-mamae-bebe.webp"
     },
     {
-      "@type": "Question",
-      "name": "Preciso ter experiência prévia para começar a praticar yoga?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Não. O yoga acolhe cada corpo e cada ritmo, independente da idade ou condição física. As aulas no Essência são adaptadas para iniciantes e praticantes em qualquer nível." }
+      "@type": ["Service", "Course"],
+      "@id": "https://essenciadoyoga.com.br/#service-kids",
+      "name": "Yoga Kids em Sorocaba",
+      "serviceType": "Yoga infantil",
+      "description": "Aulas de yoga lúdicas para crianças, estimulando concentração, criatividade, equilíbrio emocional e consciência corporal.",
+      "provider": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" },
+      "areaServed": { "@type": "City", "name": "Sorocaba" },
+      "audience": { "@type": "PeopleAudience", "suggestedMinAge": 4, "suggestedMaxAge": 12 },
+      "image": "https://essenciadoyoga.com.br/images/yoga-kids.webp"
     },
     {
-      "@type": "Question",
-      "name": "Quais os benefícios da prática de yoga?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A prática regular de yoga fortalece o corpo, melhora a flexibilidade, alivia o estresse e a ansiedade, melhora o sono, aumenta a concentração e promove autoconhecimento." }
+      "@type": "Thing",
+      "@id": "https://essenciadoyoga.com.br/#concept-yoga",
+      "name": "Yoga",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q9095",
+        "https://pt.wikipedia.org/wiki/Yoga"
+      ]
     },
     {
-      "@type": "Question",
-      "name": "Qual o valor das aulas de yoga em Sorocaba?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Os valores variam conforme o plano escolhido (mensal, trimestral, anual) e a quantidade de aulas semanais. Consulte os valores atualizados pelo WhatsApp (15) 99133-1624." }
+      "@type": "Thing",
+      "@id": "https://essenciadoyoga.com.br/#concept-hatha",
+      "name": "Hatha Yoga",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q582683",
+        "https://pt.wikipedia.org/wiki/Hatha-yoga"
+      ]
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://essenciadoyoga.com.br/#concept-vinyasa",
+      "name": "Vinyasa Yoga",
+      "sameAs": ["https://www.wikidata.org/wiki/Q7935028"]
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://essenciadoyoga.com.br/#concept-meditacao",
+      "name": "Meditação",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q5891",
+        "https://pt.wikipedia.org/wiki/Medita%C3%A7%C3%A3o"
+      ]
+    },
+    {
+      "@type": "Thing",
+      "@id": "https://essenciadoyoga.com.br/#concept-pranayama",
+      "name": "Pranayama",
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q1786160",
+        "https://pt.wikipedia.org/wiki/Pranayama"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://essenciadoyoga.com.br/#faq",
+      "isPartOf": { "@type": "WebPage", "@id": "https://essenciadoyoga.com.br/#webpage" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Onde fica o Studio Essência do Yoga em Sorocaba?",
+          "acceptedAnswer": { "@type": "Answer", "text": "O Essência do Yoga fica na Rua Goiás, 117, Centro, Sorocaba/SP — próximo ao coração da cidade, com fácil acesso e estacionamento na região." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais modalidades de yoga são oferecidas em Sorocaba?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Oferecemos Yoga para Adultos (Hatha e Vinyasa), Yoga Mamãe & Bebê para o pós-parto e Yoga Kids para crianças. Todas as aulas são pensadas para cada momento da vida, com turmas pequenas e atendimento personalizado." }
+        },
+        {
+          "@type": "Question",
+          "name": "Como agendar uma aula experimental de yoga?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Para agendar sua aula experimental, entre em contato pelo WhatsApp (15) 99133-1624 ou clique no botão 'Fale Conosco' no site. A primeira aula é uma oportunidade para conhecer o studio sem compromisso." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais os horários do studio de yoga?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Funcionamos de segunda a sábado, das 07h às 21h, com horários flexíveis ao longo do dia." }
+        },
+        {
+          "@type": "Question",
+          "name": "Preciso ter experiência prévia para começar a praticar yoga?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Não. O yoga acolhe cada corpo e cada ritmo, independente da idade ou condição física. As aulas no Essência são adaptadas para iniciantes e praticantes em qualquer nível." }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais os benefícios da prática de yoga?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A prática regular de yoga fortalece o corpo, melhora a flexibilidade, alivia o estresse e a ansiedade, melhora o sono, aumenta a concentração e promove autoconhecimento." }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual o valor das aulas de yoga em Sorocaba?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Os valores variam conforme o plano escolhido (mensal, trimestral, anual) e a quantidade de aulas semanais. Consulte os valores atualizados pelo WhatsApp (15) 99133-1624." }
+        }
+      ]
     }
   ]
 };
@@ -267,9 +332,8 @@ const faqSchema = {
     rel="stylesheet"
   />
 
-  <!-- Structured data -->
-  <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
-  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <!-- Structured data — @graph consolidado (Organization + WebSite + WebPage + LocalBusiness + Services + Things + FAQPage) -->
+  <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
 </head>
 <body>
   <slot />

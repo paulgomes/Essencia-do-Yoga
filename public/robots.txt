@@ -24,3 +24,7 @@ Sitemap: https://essenciadoyoga.com.br/sitemap-index.xml
 # https://llmstxt.org/
 # https://essenciadoyoga.com.br/llms.txt
 # https://essenciadoyoga.com.br/llms-full.txt
+
+# Estrutura semântica
+# Site usa JSON-LD com @graph completo + Microdata
+# Entidade principal: https://essenciadoyoga.com.br/#studio
