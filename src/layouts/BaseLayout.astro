@@ -66,7 +66,7 @@ const graphSchema = {
       "@type": "Brand",
       "@id": `${SITE}/#brand`,
       "name": "Essência do Yoga",
-      "logo": { "@id": `${SITE}/#logo` },
+      "logo": `${SITE}/images/logo.png`,
       "slogan": "Yoga em Sorocaba: um cantinho para você respirar."
     },
 
@@ -134,20 +134,20 @@ const graphSchema = {
       "description": "Yoga em Sorocaba no Studio Essência: turmas pequenas, professora certificada e horários flexíveis. Aulas de Hatha, Vinyasa, Yoga Kids e Yoga Mamãe & Bebê no Centro de Sorocaba.",
       "slogan": "Yoga em Sorocaba: um cantinho para você respirar.",
       "image": [
-        { "@id": `${SITE}/#studio-image` },
+        `${SITE}/images/yoga-studio.webp`,
         `${SITE}/images/yoga-adultos.webp`,
         `${SITE}/images/yoga-mamae-bebe.webp`,
         `${SITE}/images/yoga-kids.webp`
       ],
-      "logo": { "@id": `${SITE}/#logo` },
+      "logo": `${SITE}/images/logo.png`,
       "url": `${SITE}/`,
       "telephone": "+55-15-99133-1624",
       "priceRange": "$$",
       "currenciesAccepted": "BRL",
       "paymentAccepted": ["Cash", "Credit Card", "Pix"],
-      "brand": { "@id": `${SITE}/#brand` },
-      "parentOrganization": { "@id": `${SITE}/#organization` },
-      "location": { "@id": `${SITE}/#place` },
+      "brand": { "@type": "Brand", "@id": `${SITE}/#brand` },
+      "parentOrganization": { "@type": "Organization", "@id": `${SITE}/#organization` },
+      "location": { "@type": "Place", "@id": `${SITE}/#place` },
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rua Goiás, 117",
@@ -171,8 +171,8 @@ const graphSchema = {
         "closes": "21:00"
       }],
       "sameAs": ["https://www.instagram.com/essencia_do_yoga/"],
-      "employee": { "@id": `${SITE}/#professora` },
-      "founder": { "@id": `${SITE}/#professora` },
+      "employee": { "@type": "Person", "@id": `${SITE}/#professora` },
+      "founder": { "@type": "Person", "@id": `${SITE}/#professora` },
       "knowsLanguage": ["pt-BR"],
       // TODO: adicionar aggregateRating quando houver reviews reais no Google Business Profile
       "potentialAction": {
@@ -191,9 +191,9 @@ const graphSchema = {
         "@type": "OfferCatalog",
         "name": "Modalidades de Yoga em Sorocaba",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@id": `${SITE}/#service-adultos` } },
-          { "@type": "Offer", "itemOffered": { "@id": `${SITE}/#service-mamae-bebe` } },
-          { "@type": "Offer", "itemOffered": { "@id": `${SITE}/#service-kids` } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": `${SITE}/#service-adultos` } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": `${SITE}/#service-mamae-bebe` } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": `${SITE}/#service-kids` } }
         ]
       }
     },
@@ -206,7 +206,7 @@ const graphSchema = {
       "serviceType": "Aulas de Yoga (Hatha e Vinyasa)",
       "category": "Yoga Adultos",
       "description": "Aulas de yoga para adultos que equilibram mente e corpo, fortalecem a musculatura, aliviam o estresse e promovem disposição e bem-estar.",
-      "provider": { "@id": `${SITE}/#studio` },
+      "provider": { "@type": "LocalBusiness", "@id": `${SITE}/#studio` },
       "areaServed": { "@type": "City", "name": "Sorocaba" },
       "audience": { "@type": "PeopleAudience", "audienceType": "Adultos" },
       "image": `${SITE}/images/yoga-adultos.webp`
@@ -218,7 +218,7 @@ const graphSchema = {
       "serviceType": "Yoga pós-parto",
       "category": "Yoga Mamãe & Bebê",
       "description": "Práticas leves de yoga para mães no pós-parto que fortalecem o vínculo com o bebê, auxiliam na recuperação e trazem serenidade.",
-      "provider": { "@id": `${SITE}/#studio` },
+      "provider": { "@type": "LocalBusiness", "@id": `${SITE}/#studio` },
       "areaServed": { "@type": "City", "name": "Sorocaba" },
       "audience": { "@type": "PeopleAudience", "audienceType": "Mães no pós-parto" },
       "image": `${SITE}/images/yoga-mamae-bebe.webp`
@@ -230,7 +230,7 @@ const graphSchema = {
       "serviceType": "Yoga infantil",
       "category": "Yoga Kids",
       "description": "Aulas de yoga lúdicas para crianças, estimulando concentração, criatividade, equilíbrio emocional e consciência corporal.",
-      "provider": { "@id": `${SITE}/#studio` },
+      "provider": { "@type": "LocalBusiness", "@id": `${SITE}/#studio` },
       "areaServed": { "@type": "City", "name": "Sorocaba" },
       "audience": { "@type": "PeopleAudience", "suggestedMinAge": 4, "suggestedMaxAge": 12, "audienceType": "Crianças" },
       "image": `${SITE}/images/yoga-kids.webp`
@@ -243,15 +243,15 @@ const graphSchema = {
       "url": `${SITE}/`,
       "name": "Essência do Yoga",
       "description": "Studio de yoga em Sorocaba/SP",
-      "publisher": { "@id": `${SITE}/#organization` },
+      "publisher": { "@type": "Organization", "@id": `${SITE}/#organization` },
       "inLanguage": "pt-BR",
-      "copyrightHolder": { "@id": `${SITE}/#organization` },
+      "copyrightHolder": { "@type": "Organization", "@id": `${SITE}/#organization` },
       "copyrightYear": 2026
     },
 
-    /* ---------------- WebPage (Home) com breadcrumb ---------------- */
-    /* speakable e ReadAction removidos: extensões Google que o
-       validator.schema.org não reconhece (mas Google Rich Results lê) */
+    /* ---------------- WebPage (Home) com breadcrumb ----------------
+       Cada @id ref agora vem com @type pra validator.schema.org resolver
+       o tipo sem precisar percorrer o @graph */
     {
       "@type": "WebPage",
       "@id": `${SITE}/#webpage`,
@@ -259,8 +259,8 @@ const graphSchema = {
       "name": title,
       "description": description,
       "inLanguage": "pt-BR",
-      "isPartOf": { "@id": `${SITE}/#website` },
-      "about": { "@id": `${SITE}/#studio` },
+      "isPartOf": { "@type": "WebSite", "@id": `${SITE}/#website` },
+      "about": { "@type": "LocalBusiness", "@id": `${SITE}/#studio` },
       "primaryImageOfPage": {
         "@type": "ImageObject",
         "url": `${SITE}/images/og-cover.jpg`,
@@ -291,7 +291,7 @@ const graphSchema = {
       "contentUrl": `${SITE}/videos/yoga-sunset.mp4`,
       "encodingFormat": "video/mp4",
       "uploadDate": "2026-05-14",
-      "publisher": { "@id": `${SITE}/#organization` },
+      "publisher": { "@type": "Organization", "@id": `${SITE}/#organization` },
       "inLanguage": "pt-BR"
     },
 
@@ -301,8 +301,8 @@ const graphSchema = {
       "@id": `${SITE}/#professora`,
       "name": "Melina",
       "jobTitle": "Professora de Yoga",
-      "worksFor": { "@id": `${SITE}/#studio` },
-      "workLocation": { "@id": `${SITE}/#place` },
+      "worksFor": { "@type": "LocalBusiness", "@id": `${SITE}/#studio` },
+      "workLocation": { "@type": "Place", "@id": `${SITE}/#place` },
       "image": `${SITE}/images/professora.webp`,
       "knowsAbout": ["Hatha Yoga", "Vinyasa Yoga", "Yoga Mamãe & Bebê", "Yoga Infantil", "Meditação", "Pranayama"],
       "knowsLanguage": ["pt-BR"],
@@ -310,7 +310,7 @@ const graphSchema = {
       "hasOccupation": {
         "@type": "Occupation",
         "name": "Professora de Yoga",
-        "occupationLocation": { "@id": `${SITE}/#place` },
+        "occupationLocation": { "@type": "Place", "@id": `${SITE}/#place` },
         "skills": "Hatha, Vinyasa, Pranayama, Meditação, Yoga Mamãe & Bebê, Yoga Infantil"
       }
     }
