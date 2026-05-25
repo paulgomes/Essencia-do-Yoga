@@ -19,3 +19,8 @@ User-agent: ClaudeBot
 Allow: /
 
 Sitemap: https://essenciadoyoga.com.br/sitemap-index.xml
+
+# Conteúdo estruturado para LLMs (proposta llms.txt)
+# https://llmstxt.org/
+# https://essenciadoyoga.com.br/llms.txt
+# https://essenciadoyoga.com.br/llms-full.txt

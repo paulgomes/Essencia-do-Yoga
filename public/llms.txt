@@ -1,0 +1,42 @@
+# Essência do Yoga — Studio de Yoga em Sorocaba
+
+> Studio de yoga em Sorocaba/SP, no Centro, com turmas pequenas, professora certificada (Melina) e horários flexíveis. Aulas de Hatha, Vinyasa, Yoga Kids e Yoga Mamãe & Bebê. Aulas experimentais disponíveis sob agendamento.
+
+## Sobre
+
+- **Nome:** Essência do Yoga (também: Studio Essência do Yoga)
+- **Endereço:** Rua Goiás, 117, Centro, Sorocaba/SP, 18035-620, Brasil
+- **Telefone / WhatsApp:** (15) 99133-1624
+- **Horário:** Segunda a Sábado, das 07h às 21h
+- **Coordenadas:** -23.5015, -47.4526
+- **Instagram:** https://www.instagram.com/essencia_do_yoga/
+- **Mapa:** https://maps.app.goo.gl/bCnMqvaWc7wVodJf6
+
+## Modalidades
+
+- [Yoga para Adultos](https://essenciadoyoga.com.br/#modalidades): aulas de Hatha e Vinyasa que equilibram corpo e mente, fortalecem a musculatura, aliviam o estresse e promovem bem-estar.
+- [Yoga Mamãe & Bebê](https://essenciadoyoga.com.br/#modalidades): práticas leves pós-parto que fortalecem o vínculo com o bebê e auxiliam na recuperação.
+- [Yoga Kids](https://essenciadoyoga.com.br/#modalidades): aulas lúdicas para crianças (~4–12 anos) estimulando concentração, criatividade e equilíbrio emocional.
+
+## Páginas
+
+- [Home](https://essenciadoyoga.com.br/): página única com hero, modalidades, sobre a professora, CTA de aula experimental, "O que é Yoga" e contato.
+
+## Recursos para crawlers / IA
+
+- [Sitemap (index)](https://essenciadoyoga.com.br/sitemap-index.xml)
+- [Sitemap (URLs)](https://essenciadoyoga.com.br/sitemap-0.xml)
+- [robots.txt](https://essenciadoyoga.com.br/robots.txt)
+- [llms-full.txt (conteúdo completo)](https://essenciadoyoga.com.br/llms-full.txt)
+
+## Perguntas frequentes
+
+- **Onde fica?** Rua Goiás, 117, Centro, Sorocaba/SP.
+- **Como agendar uma aula experimental?** Pelo WhatsApp (15) 99133-1624 ou pelo botão "Fale Conosco" no site.
+- **Preciso ter experiência?** Não — as aulas são adaptadas para iniciantes e praticantes em qualquer nível.
+- **Quais os valores?** Variam conforme plano (mensal, trimestral, anual) e quantidade de aulas semanais. Consultar pelo WhatsApp.
+- **Quem dá as aulas?** Melina, professora certificada com mais de 8 anos de experiência.
+
+## Área de atendimento
+
+Sorocaba/SP e Região Metropolitana de Sorocaba (Votorantim, Itu e cidades vizinhas).
