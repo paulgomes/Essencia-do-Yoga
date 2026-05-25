@@ -5,102 +5,185 @@ export interface Props {
 }
 
 const {
-  title = 'Studio de Yoga Sorocaba - Essência Do Yoga',
-  description = 'Studio de Yoga Sorocaba: No coração de Sorocaba, nasce um espaço dedicado ao equilíbrio, à consciência e ao bem-estar.',
+  title = 'Studio de Yoga em Sorocaba | Essência do Yoga - Hatha, Vinyasa e Meditação',
+  description = 'Studio de Yoga em Sorocaba/SP com turmas pequenas, horários flexíveis e atendimento personalizado. Aulas de Hatha, Vinyasa, Yoga Kids, Yoga Mamãe & Bebê e meditação no Centro de Sorocaba. Agende sua aula experimental.',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
-const ogImage = 'https://essenciadoyoga.com.br/images/yoga-studio.webp';
+const ogImage = new URL('/images/yoga-studio.webp', Astro.site).href;
+const keywords = 'yoga sorocaba, studio yoga sorocaba, aulas de yoga sorocaba, hatha yoga sorocaba, vinyasa sorocaba, yoga kids sorocaba, yoga mamãe e bebê, meditação sorocaba, essência do yoga, yoga centro sorocaba';
+
+const healthClubSchema = {
+  "@context": "https://schema.org",
+  "@type": "HealthClub",
+  "@id": "https://essenciadoyoga.com.br/#studio",
+  "name": "Essência do Yoga",
+  "alternateName": "Studio Essência do Yoga",
+  "description": "Studio de yoga em Sorocaba com turmas pequenas, horários flexíveis e atendimento personalizado. Aulas de Hatha, Vinyasa, Yoga Kids, Yoga Mamãe & Bebê e meditação no coração da cidade.",
+  "image": ["https://essenciadoyoga.com.br/images/logo.png", "https://essenciadoyoga.com.br/images/yoga-studio.webp"],
+  "logo": "https://essenciadoyoga.com.br/images/logo.png",
+  "url": "https://essenciadoyoga.com.br/",
+  "telephone": "+5515991331624",
+  "priceRange": "$$",
+  "currenciesAccepted": "BRL",
+  "paymentAccepted": "Cash, Credit Card, Pix",
+  "areaServed": [
+    { "@type": "City", "name": "Sorocaba" },
+    { "@type": "AdministrativeArea", "name": "Região Metropolitana de Sorocaba" }
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Goiás, 117",
+    "addressLocality": "Sorocaba",
+    "addressRegion": "SP",
+    "postalCode": "18035-620",
+    "addressCountry": "BR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -23.5015,
+    "longitude": -47.4526
+  },
+  "hasMap": "https://maps.app.goo.gl/bCnMqvaWc7wVodJf6",
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "07:00",
+      "closes": "21:00"
+    }
+  ],
+  "sameAs": ["https://www.instagram.com/essencia_do_yoga/"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Modalidades de Yoga",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yoga Adultos", "description": "Aulas de yoga para adultos que equilibram mente e corpo, promovendo disposição e bem-estar." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yoga Mamãe & Bebê", "description": "Práticas leves de yoga para mães no pós-parto que fortalecem o vínculo com o bebê." } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Yoga Kids", "description": "Aulas de yoga lúdicas para crianças, estimulando concentração, criatividade e equilíbrio emocional." } }
+    ]
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Onde fica o Studio Essência do Yoga em Sorocaba?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Estamos na Rua Goiás, 117, Centro, Sorocaba/SP, próximo ao coração da cidade." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais modalidades de yoga são oferecidas?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Oferecemos Yoga Adultos, Yoga Mamãe & Bebê e Yoga Kids, com aulas pensadas para cada momento da vida." }
+    },
+    {
+      "@type": "Question",
+      "name": "Como agendar uma aula experimental?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Agende pelo WhatsApp (15) 99133-1624 ou pelo botão 'Fale Conosco' no site." }
+    },
+    {
+      "@type": "Question",
+      "name": "Quais os horários do studio?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Funcionamos de segunda a sábado, das 07h às 21h." }
+    }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://essenciadoyoga.com.br/" }
+  ]
+};
 ---
 
 <!DOCTYPE html>
 <html dir="ltr" lang="pt-BR" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>{title}</title>
 
   <meta name="description" content={description} />
-  <meta name="robots" content="max-image-preview:large" />
+  <meta name="keywords" content={keywords} />
+  <meta name="author" content="Essência do Yoga" />
+  <meta name="publisher" content="Essência do Yoga" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="format-detection" content="telephone=yes" />
   <link rel="canonical" href={canonicalURL} />
+  <link rel="alternate" hreflang="pt-BR" href={canonicalURL} />
+  <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
+  <!-- Resource hints (performance) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+  <!-- Preload critical assets (LCP) -->
+  <link rel="preload" as="image" href="/images/yoga-sunset-poster.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/logo-branco.png" fetchpriority="high" />
+
+  <!-- Open Graph -->
   <meta property="og:locale" content="pt_BR" />
-  <meta property="og:site_name" content="essenciadoyoga.com.br -" />
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Studio de Yoga Sorocaba" />
+  <meta property="og:site_name" content="Essência do Yoga" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:image" content={ogImage} />
   <meta property="og:image:secure_url" content={ogImage} />
-  <meta property="og:image:width" content="2048" />
-  <meta property="og:image:height" content="2048" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Studio Essência do Yoga em Sorocaba" />
 
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Studio de Yoga Sorocaba" />
+  <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content="Studio Essência do Yoga em Sorocaba" />
 
-  <!-- Geo -->
+  <!-- GEO / Local SEO -->
   <meta name="geo.region" content="BR-SP" />
-  <meta name="geo.placename" content="Sorocaba" />
+  <meta name="geo.placename" content="Sorocaba, São Paulo, Brasil" />
   <meta name="geo.position" content="-23.5015;-47.4526" />
   <meta name="ICBM" content="-23.5015, -47.4526" />
+  <meta name="DC.title" content={title} />
+  <meta name="DC.creator" content="Essência do Yoga" />
+  <meta name="DC.subject" content="Yoga em Sorocaba" />
+  <meta name="DC.coverage" content="Sorocaba, SP, Brasil" />
+  <meta name="DC.language" content="pt-BR" />
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <meta name="theme-color" content="#154A30" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="msapplication-TileColor" content="#154A30" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Essência do Yoga" />
 
-  <!-- Fontes (Cormorant Garamond + Outfit, mesmas do original) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Fontes: pesos reduzidos e display=swap -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Outfit:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   />
 
-  <!-- Schema HealthClub completo (idêntico ao original) -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "HealthClub",
-    "name": "Essência do Yoga",
-    "description": "Studio de yoga em Sorocaba com turmas pequenas, horários flexíveis e atendimento personalizado. Aulas de Hatha, Vinyasa e meditação no coração da cidade.",
-    "image": "https://essenciadoyoga.com.br/images/logo.png",
-    "url": "https://essenciadoyoga.com.br/",
-    "telephone": "+55 15 99133-1624",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Rua Goiás, 117",
-      "addressLocality": "Sorocaba",
-      "addressRegion": "SP",
-      "postalCode": "18035-620",
-      "addressCountry": "BR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": -23.5015,
-      "longitude": -47.4526
-    },
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "07:00",
-        "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "07:00",
-        "closes": "21:00"
-      }
-    ],
-    "sameAs": ["https://www.instagram.com/essencia_do_yoga/"]
-  })} />
+  <!-- Structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify(healthClubSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 </head>
 <body>
   <slot />
@@ -109,17 +192,32 @@ const ogImage = 'https://essenciadoyoga.com.br/images/yoga-studio.webp';
 
 <style is:global>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
   body {
-    font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+    font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     color: #18241C;
     background: #FFFFFF;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
   }
-  img, picture, video { max-width: 100%; height: auto; display: block; }
+  img, picture, video, svg { max-width: 100%; height: auto; display: block; }
   a { color: inherit; text-decoration: none; }
   button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; }
   ul, ol { list-style: none; }
   :focus-visible { outline: 2px solid #1D603E; outline-offset: 3px; }
+  ::selection { background: #BEEBAC; color: #154A30; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 </style>

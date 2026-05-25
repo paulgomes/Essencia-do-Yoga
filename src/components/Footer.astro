@@ -2,43 +2,6 @@
 // Footer .ey-footer - reconstrução fiel
 ---
 
-<!-- Schema LocalBusiness no rodapé (complementa o do hero, como no original) -->
-<script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "HealthClub",
-  "name": "Essência do Yoga",
-  "url": "https://essenciadoyoga.com.br/",
-  "telephone": "+55 15 99133-1624",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Rua Goiás, 117",
-    "addressLocality": "Sorocaba",
-    "addressRegion": "SP",
-    "postalCode": "18035-620",
-    "addressCountry": "BR"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": -23.5015,
-    "longitude": -47.4526
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "07:00",
-      "closes": "21:00"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": "Saturday",
-      "opens": "07:00",
-      "closes": "21:00"
-    }
-  ],
-  "sameAs": ["https://www.instagram.com/essencia_do_yoga/"]
-})} />
-
 <footer id="footer-contato" class="ey-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
   <div class="ey-footer__container">
 
@@ -47,7 +10,7 @@
       <!-- Brand -->
       <div class="ey-footer__brand">
         <a href="/" class="ey-footer__logo" aria-label="Ir para página inicial">
-          <img loading="lazy" decoding="async" src="/images/logo.png" alt="Logo Essência do Yoga" width="48" height="48" />
+          <img loading="lazy" decoding="async" src="/images/logo-branco.png" alt="Logo Essência do Yoga" width="56" height="56" />
           <span class="ey-footer__logo-name">Essência do Yoga</span>
         </a>
         <p class="ey-footer__tagline">
@@ -139,7 +102,7 @@
     width: 100%;
     background: var(--green-deep) !important;
     color: var(--white) !important;
-    padding: clamp(3.5rem, 3rem + 3vw, 5.5rem) 0 1.75rem;
+    padding: clamp(3rem, 2.5rem + 2vw, 4.5rem) 0 1.5rem;
     position: relative;
     overflow: hidden;
   }
@@ -168,10 +131,11 @@
 
   .ey-footer__top {
     display: grid;
-    grid-template-columns: 1.4fr 1fr 1fr 1fr;
-    gap: clamp(2rem, 1.5rem + 2vw, 3.5rem);
-    padding-bottom: 2.5rem;
+    grid-template-columns: 1.5fr 1fr 1.1fr 1.1fr;
+    gap: clamp(1.5rem, 1.2rem + 1.5vw, 2.75rem);
+    padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+    align-items: start;
   }
 
   .ey-footer__brand { max-width: 340px; }
@@ -184,10 +148,9 @@
     text-decoration: none !important;
   }
   .ey-footer__logo img {
-    width: 48px;
-    height: 48px;
-    filter: brightness(0) invert(1);
-    opacity: 0.92;
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
   }
   .ey-footer__logo-name {
     font-family: var(--font-serif);
@@ -277,11 +240,11 @@
   }
 
   .ey-footer__cta-box {
-    padding: 1.15rem;
+    padding: 1.1rem 1.15rem 1.15rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.10);
     border-radius: var(--r-md);
-    margin-top: 0.75rem;
+    margin-top: 0;
   }
   .ey-footer__cta-box p {
     font-family: var(--font-serif);
@@ -333,10 +296,10 @@
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    padding-top: 1.75rem;
+    padding-top: 1.5rem;
     font-family: var(--font-sans);
     font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.45) !important;
+    color: rgba(255, 255, 255, 0.55) !important;
   }
   .ey-footer__bottom a {
     color: var(--lilac-light) !important;
@@ -350,8 +313,9 @@
   @media (max-width: 860px) {
     .ey-footer__top {
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 1.75rem;
     }
+    .ey-footer__brand { grid-column: 1 / -1; max-width: 100%; }
   }
 
   @media (max-width: 560px) {
