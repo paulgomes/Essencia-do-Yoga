@@ -98,9 +98,9 @@ svg {
   justify-content: center !important;
   text-align: center !important;
   min-height: 100svh !important;
-  padding-top: clamp(60px, 10vh, 120px) !important;
-  padding-bottom: clamp(40px, 8vh, 80px) !important;
-  gap: clamp(16px, 2.5vh, 28px) !important;
+  padding-top: clamp(20px, 3vh, 40px) !important;
+  padding-bottom: clamp(30px, 5vh, 60px) !important;
+  gap: clamp(12px, 1.5vh, 20px) !important;
 }
 
 .studio-hero__title {
