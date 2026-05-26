@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Beneficios from '../components/Beneficios.astro';
-import Faq from '../components/Faq.astro';
 import Footer from '../components/Footer.astro';
 import FloatingButton from '../components/FloatingButton.astro';
 
@@ -10,16 +9,6 @@ const description = 'Yoga Kids em Sorocaba para crianças de 4 a 13 anos. Aulas 
 const keywords = 'yoga kids sorocaba, yoga infantil sorocaba, aulas de yoga para crianças sorocaba, atividade para crianças sorocaba, yoga kids centro sorocaba';
 // TODO: criar /images/og-yoga-kids.jpg 1200x630 dedicada — enquanto isso usa og-cover
 const ogImage = 'https://essenciadoyoga.com.br/images/og-cover.jpg';
-
-const faqKids = [
-  { q: "A partir de que idade meu filho pode fazer yoga?", a: "A partir dos 4 anos. Antes disso, recomendamos atividades mais livres como yoga pais & filhos." },
-  { q: "Quanto tempo dura uma aula de Yoga Kids?", a: "As aulas têm duração de 45 minutos, adaptadas à capacidade de atenção da faixa etária." },
-  { q: "Preciso ficar na sala durante a aula?", a: "Não. As crianças praticam sozinhas com a professora, criando um espaço de autonomia. Você pode acompanhar na primeira aula." },
-  { q: "Yoga Kids ajuda crianças com TDAH ou ansiedade?", a: "Sim, é uma prática reconhecida como complementar para crianças com dificuldades de atenção e regulação emocional, sempre em conjunto com acompanhamento profissional." },
-  { q: "Qual roupa meu filho deve usar?", a: "Roupas confortáveis que permitam movimento — calça legging, shorts, camiseta. Sem sapato (praticamos descalço)." },
-  { q: "Quantas crianças por turma?", a: "Turmas pequenas, até 8 crianças, para garantir atenção individualizada." },
-  { q: "Onde fica o studio?", a: "Rua Goiás, 117, Centro, Sorocaba/SP, próximo ao coração da cidade." },
-];
 
 const turmas = [
   {
@@ -192,12 +181,6 @@ const turmas = [
       </div>
     </section>
 
-    <!-- FAQ Kids -->
-    <Faq
-      eyebrow="Dúvidas Frequentes"
-      title='Perguntas frequentes sobre <em>Yoga Kids</em> em Sorocaba'
-      questions={faqKids}
-    />
   </main>
 
   <Footer />

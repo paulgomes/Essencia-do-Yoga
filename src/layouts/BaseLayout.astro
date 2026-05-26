@@ -378,20 +378,9 @@ if (pageType === 'kids-landing') {
       { "@type": "ListItem", "position": 2, "name": "Yoga Kids em Sorocaba", "item": "https://essenciadoyoga.com.br/yoga-kids-sorocaba" }
     ]
   });
-  // Adiciona FAQPage kids
-  graphSchema["@graph"].push({
-    "@type": "FAQPage",
-    "@id": "https://essenciadoyoga.com.br/yoga-kids-sorocaba#faq",
-    "mainEntity": [
-      { "@type": "Question", "name": "A partir de que idade meu filho pode fazer yoga?", "acceptedAnswer": { "@type": "Answer", "text": "A partir dos 4 anos. Antes disso, recomendamos atividades mais livres como yoga pais & filhos." } },
-      { "@type": "Question", "name": "Quanto tempo dura uma aula de Yoga Kids?", "acceptedAnswer": { "@type": "Answer", "text": "As aulas têm duração de 45 minutos, adaptadas à capacidade de atenção da faixa etária." } },
-      { "@type": "Question", "name": "Preciso ficar na sala durante a aula?", "acceptedAnswer": { "@type": "Answer", "text": "Não. As crianças praticam sozinhas com a professora, criando um espaço de autonomia. Você pode acompanhar na primeira aula." } },
-      { "@type": "Question", "name": "Yoga Kids ajuda crianças com TDAH ou ansiedade?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, é uma prática reconhecida como complementar para crianças com dificuldades de atenção e regulação emocional, sempre em conjunto com acompanhamento profissional." } },
-      { "@type": "Question", "name": "Qual roupa meu filho deve usar?", "acceptedAnswer": { "@type": "Answer", "text": "Roupas confortáveis que permitam movimento — calça legging, shorts, camiseta. Sem sapato (praticamos descalço)." } },
-      { "@type": "Question", "name": "Quantas crianças por turma?", "acceptedAnswer": { "@type": "Answer", "text": "Turmas pequenas, até 8 crianças, para garantir atenção individualizada." } },
-      { "@type": "Question", "name": "Onde fica o studio?", "acceptedAnswer": { "@type": "Answer", "text": "Rua Goiás, 117, Centro, Sorocaba/SP, próximo ao coração da cidade." } }
-    ]
-  });
+  // NOTA: FAQPage removido — Google penaliza schema sem o conteúdo visível
+  // correspondente na página (https://developers.google.com/search/docs/appearance/structured-data/faqpage).
+  // Se reintroduzir a seção visual, restaurar este bloco.
 }
 ---
 
