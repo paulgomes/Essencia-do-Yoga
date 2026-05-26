@@ -21,7 +21,9 @@
     </video>
   </div>
   <script>
-    /* LCP no mobile = poster <img>. Vídeo carrega só desktop ocioso + conexão decente */
+    /* LCP no mobile = poster <img>. Vídeo carrega só desktop ocioso + conexão decente.
+       Usa 2 rAFs aninhados pra separar prep (load/src) de paint (play+fade), evitando
+       reflow forçado entre operações de DOM. */
     (function(){
       var isDesktop = window.matchMedia('(min-width: 769px)').matches;
       var conn = navigator.connection;
@@ -32,15 +34,21 @@
         var img = document.getElementById('hero-bg-img');
         if (!v) return;
         var src = v.querySelector('source[data-src]');
-        if (src) { src.src = src.dataset.src; src.removeAttribute('data-src'); }
-        v.load();
-        var play = v.play();
-        if (play && play.then) {
-          play.then(function(){
-            v.classList.add('is-playing');
-            if (img) img.style.opacity = '0';
-          }).catch(function(){});
-        }
+        requestAnimationFrame(function(){
+          /* 1º frame: preparação (set src + load), sem mexer no estilo visual */
+          if (src) { src.src = src.dataset.src; src.removeAttribute('data-src'); }
+          v.load();
+          requestAnimationFrame(function(){
+            /* 2º frame: play + escrita de classe/style (compositor only) */
+            var play = v.play();
+            if (play && play.then) {
+              play.then(function(){
+                v.classList.add('is-playing');
+                if (img) img.style.opacity = '0';
+              }).catch(function(){});
+            }
+          });
+        });
       }
       if ('requestIdleCallback' in window) requestIdleCallback(loadHeroVideo, { timeout: 2000 });
       else setTimeout(loadHeroVideo, 1000);

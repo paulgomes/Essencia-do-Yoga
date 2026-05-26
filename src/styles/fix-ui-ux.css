@@ -2,6 +2,19 @@
    ESSÊNCIA DO YOGA - PATCH UI/UX + RESPONSIVO
    ========================================================= */
 
+/* ---------- PERF: content-visibility nas seções below-the-fold ----------
+   contain-intrinsic-size reserva espaço pra evitar layout shift quando
+   a seção entra no viewport. Hero (#studio) é excluído pois é LCP. */
+.ey-stats,
+.ey-mod,
+.ey-cta,
+.ey-yoga,
+.ey-prof,
+.ey-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* ---------- 0. RESET DE OVERFLOW E BOX-SIZING ---------- */
 *,
 *::before,

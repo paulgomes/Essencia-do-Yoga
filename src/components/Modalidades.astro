@@ -112,7 +112,8 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
     requestAnimationFrame(function () {
       els.forEach(function (el, i) {
-        el.style.transitionDelay = (i * 70) + 'ms';
+        /* CSS var em vez de transition-delay direto: evita reflow no setup */
+        el.style.setProperty('--reveal-delay', (i * 70) + 'ms');
         io.observe(el);
       });
     });
@@ -340,6 +341,7 @@
     transform: translateY(24px);
     contain: layout style;
     transition: opacity 800ms var(--ease), transform 800ms var(--ease);
+    transition-delay: var(--reveal-delay, 0ms);
   }
   .ey-mod .ey-mod-reveal.is-visible {
     opacity: 1;
