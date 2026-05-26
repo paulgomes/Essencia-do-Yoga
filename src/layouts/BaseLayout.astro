@@ -390,11 +390,19 @@ if (pageType !== 'home') {
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Essência do Yoga" />
 
-  <!-- Fontes (Cormorant Garamond + Outfit) -->
+  <!-- Fontes (Cormorant Garamond + Outfit) — carregamento non-blocking -->
   <link
+    rel="preload"
+    as="style"
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
+    onload="this.onload=null;this.rel='stylesheet'"
   />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    />
+  </noscript>
 
   <!-- Structured data — @graph consolidado (Organization + WebSite + WebPage + LocalBusiness + Services + Things + FAQPage) -->
   <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
