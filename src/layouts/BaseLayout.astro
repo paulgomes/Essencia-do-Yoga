@@ -500,6 +500,15 @@ if (pageType === 'kids-landing') {
 
   <!-- Structured data — @graph consolidado (Organization + WebSite + WebPage + LocalBusiness + Services + Things + FAQPage) -->
   <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
+
+  <!-- Google tag (gtag.js) — Google Ads AW-18191146172 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18191146172"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18191146172');
+  </script>
 </head>
 <body>
   <slot />
