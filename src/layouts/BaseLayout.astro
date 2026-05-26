@@ -4,19 +4,23 @@ import '../styles/fix-ui-ux.css';
 export interface Props {
   title?: string;
   description?: string;
-  pageType?: 'home' | 'privacy' | 'generic';
+  pageType?: 'home' | 'privacy' | 'generic' | 'kids-landing';
+  ogImage?: string;
+  keywords?: string;
 }
 
 const {
   title = 'Yoga em Sorocaba | Essência do Yoga — Studio no Centro',
   description = 'Yoga em Sorocaba no Studio Essência: turmas pequenas, professora certificada e horários flexíveis. Aulas de Hatha, Vinyasa, Yoga Kids e Mamãe & Bebê no Centro. Agende sua aula experimental.',
   pageType = 'home',
+  ogImage: ogImageProp,
+  keywords: keywordsProp,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 // TODO: criar /images/og-cover.jpg (1200x630, JPG, <300KB, com zona segura central 1080x540)
-const ogImage = new URL('/images/og-cover.jpg', Astro.site).href;
-const keywords = 'yoga em sorocaba, yoga sorocaba, studio de yoga em sorocaba, aulas de yoga sorocaba, hatha yoga sorocaba, vinyasa sorocaba, yoga kids sorocaba, yoga mamãe e bebê sorocaba, yoga centro sorocaba, essência do yoga';
+const ogImage = ogImageProp || new URL('/images/og-cover.jpg', Astro.site).href;
+const keywords = keywordsProp || 'yoga em sorocaba, yoga sorocaba, studio de yoga em sorocaba, aulas de yoga sorocaba, hatha yoga sorocaba, vinyasa sorocaba, yoga kids sorocaba, yoga mamãe e bebê sorocaba, yoga centro sorocaba, essência do yoga';
 
 // Variantes mais curtas pra OG/Twitter (que truncam em ~60 chars no title e ~125-150 no description)
 const ogTitle = 'Yoga em Sorocaba | Essência do Yoga';
@@ -313,6 +317,81 @@ if (pageType !== 'home') {
   graphSchema["@graph"] = graphSchema["@graph"].filter(
     (e: any) => e["@type"] !== "FAQPage"
   );
+}
+
+// Kids landing: adiciona entidades específicas (Service+Course com hasCourseInstance,
+// FAQPage kids, BreadcrumbList) e remove serviços de adultos/mãe+bebê que não fazem
+// sentido nessa página
+if (pageType === 'kids-landing') {
+  // Remove serviços não-kids do graph
+  graphSchema["@graph"] = graphSchema["@graph"].filter((e: any) => {
+    const id = e["@id"];
+    return id !== "https://essenciadoyoga.com.br/#service-adultos" &&
+           id !== "https://essenciadoyoga.com.br/#service-mamae-bebe" &&
+           id !== "https://essenciadoyoga.com.br/#service-todos";
+  });
+  // Substitui #service-kids por versão Service+Course com hasCourseInstance
+  graphSchema["@graph"] = graphSchema["@graph"].map((e: any) => {
+    if (e["@id"] === "https://essenciadoyoga.com.br/#service-kids") {
+      return {
+        "@type": ["Service", "Course"],
+        "@id": "https://essenciadoyoga.com.br/#service-kids",
+        "name": "Yoga Kids em Sorocaba",
+        "alternateName": "Yoga Infantil em Sorocaba",
+        "description": "Aulas de yoga lúdicas para crianças de 4 a 13 anos, divididas por faixa etária, focadas em concentração, equilíbrio emocional e desenvolvimento motor.",
+        "serviceType": "Yoga infantil",
+        "url": "https://essenciadoyoga.com.br/yoga-kids-sorocaba",
+        "image": "https://essenciadoyoga.com.br/images/yoga-kids.webp",
+        "provider": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" },
+        "areaServed": { "@type": "City", "name": "Sorocaba", "sameAs": "https://www.wikidata.org/wiki/Q201794" },
+        "audience": { "@type": "PeopleAudience", "suggestedMinAge": 4, "suggestedMaxAge": 13 },
+        "hasCourseInstance": [
+          {
+            "@type": "CourseInstance",
+            "name": "Yoga Mini (4-6 anos)",
+            "courseMode": "onsite",
+            "location": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" }
+          },
+          {
+            "@type": "CourseInstance",
+            "name": "Yoga Kids (7-10 anos)",
+            "courseMode": "onsite",
+            "location": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" }
+          },
+          {
+            "@type": "CourseInstance",
+            "name": "Yoga Teen (11-13 anos)",
+            "courseMode": "onsite",
+            "location": { "@type": "LocalBusiness", "@id": "https://essenciadoyoga.com.br/#studio" }
+          }
+        ]
+      };
+    }
+    return e;
+  });
+  // Adiciona BreadcrumbList kids
+  graphSchema["@graph"].push({
+    "@type": "BreadcrumbList",
+    "@id": "https://essenciadoyoga.com.br/yoga-kids-sorocaba#breadcrumb",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://essenciadoyoga.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Yoga Kids em Sorocaba", "item": "https://essenciadoyoga.com.br/yoga-kids-sorocaba" }
+    ]
+  });
+  // Adiciona FAQPage kids
+  graphSchema["@graph"].push({
+    "@type": "FAQPage",
+    "@id": "https://essenciadoyoga.com.br/yoga-kids-sorocaba#faq",
+    "mainEntity": [
+      { "@type": "Question", "name": "A partir de que idade meu filho pode fazer yoga?", "acceptedAnswer": { "@type": "Answer", "text": "A partir dos 4 anos. Antes disso, recomendamos atividades mais livres como yoga pais & filhos." } },
+      { "@type": "Question", "name": "Quanto tempo dura uma aula de Yoga Kids?", "acceptedAnswer": { "@type": "Answer", "text": "As aulas têm duração de 45 minutos, adaptadas à capacidade de atenção da faixa etária." } },
+      { "@type": "Question", "name": "Preciso ficar na sala durante a aula?", "acceptedAnswer": { "@type": "Answer", "text": "Não. As crianças praticam sozinhas com a professora, criando um espaço de autonomia. Você pode acompanhar na primeira aula." } },
+      { "@type": "Question", "name": "Yoga Kids ajuda crianças com TDAH ou ansiedade?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, é uma prática reconhecida como complementar para crianças com dificuldades de atenção e regulação emocional, sempre em conjunto com acompanhamento profissional." } },
+      { "@type": "Question", "name": "Qual roupa meu filho deve usar?", "acceptedAnswer": { "@type": "Answer", "text": "Roupas confortáveis que permitam movimento — calça legging, shorts, camiseta. Sem sapato (praticamos descalço)." } },
+      { "@type": "Question", "name": "Quantas crianças por turma?", "acceptedAnswer": { "@type": "Answer", "text": "Turmas pequenas, até 8 crianças, para garantir atenção individualizada." } },
+      { "@type": "Question", "name": "Onde fica o studio?", "acceptedAnswer": { "@type": "Answer", "text": "Rua Goiás, 117, Centro, Sorocaba/SP, próximo ao coração da cidade." } }
+    ]
+  });
 }
 ---
 

@@ -7,17 +7,20 @@ export default defineConfig({
   trailingSlash: 'never',
   integrations: [
     sitemap({
-      filter: (page) =>
-        page === 'https://essenciadoyoga.com.br/' ||
-        page === 'https://essenciadoyoga.com.br/politica-de-privacidade',
+      filter: (page) => [
+        'https://essenciadoyoga.com.br/',
+        'https://essenciadoyoga.com.br/yoga-kids-sorocaba',
+        'https://essenciadoyoga.com.br/politica-de-privacidade',
+      ].includes(page),
       serialize(item) {
-        const isHome = item.url === 'https://essenciadoyoga.com.br/';
-        return {
-          ...item,
-          changefreq: isHome ? 'monthly' : 'yearly',
-          priority: isHome ? 1.0 : 0.3,
-          lastmod: new Date().toISOString(),
-        };
+        const lastmod = new Date().toISOString();
+        if (item.url === 'https://essenciadoyoga.com.br/') {
+          return { ...item, changefreq: 'monthly', priority: 1.0, lastmod };
+        }
+        if (item.url === 'https://essenciadoyoga.com.br/yoga-kids-sorocaba') {
+          return { ...item, changefreq: 'monthly', priority: 0.9, lastmod };
+        }
+        return { ...item, changefreq: 'yearly', priority: 0.3, lastmod };
       },
     }),
     critters({

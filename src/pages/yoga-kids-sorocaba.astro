@@ -1,0 +1,687 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Beneficios from '../components/Beneficios.astro';
+import Faq from '../components/Faq.astro';
+import Footer from '../components/Footer.astro';
+import FloatingButton from '../components/FloatingButton.astro';
+
+const title = 'Yoga Kids em Sorocaba | Aulas de Yoga para Crianças | Essência do Yoga';
+const description = 'Yoga Kids em Sorocaba para crianças de 4 a 13 anos. Aulas lúdicas que desenvolvem concentração, equilíbrio emocional e autoestima. Turmas pequenas no Centro. Agende uma aula experimental gratuita.';
+const keywords = 'yoga kids sorocaba, yoga infantil sorocaba, aulas de yoga para crianças sorocaba, atividade para crianças sorocaba, yoga kids centro sorocaba';
+// TODO: criar /images/og-yoga-kids.jpg 1200x630 dedicada — enquanto isso usa og-cover
+const ogImage = 'https://essenciadoyoga.com.br/images/og-cover.jpg';
+
+const faqKids = [
+  { q: "A partir de que idade meu filho pode fazer yoga?", a: "A partir dos 4 anos. Antes disso, recomendamos atividades mais livres como yoga pais & filhos." },
+  { q: "Quanto tempo dura uma aula de Yoga Kids?", a: "As aulas têm duração de 45 minutos, adaptadas à capacidade de atenção da faixa etária." },
+  { q: "Preciso ficar na sala durante a aula?", a: "Não. As crianças praticam sozinhas com a professora, criando um espaço de autonomia. Você pode acompanhar na primeira aula." },
+  { q: "Yoga Kids ajuda crianças com TDAH ou ansiedade?", a: "Sim, é uma prática reconhecida como complementar para crianças com dificuldades de atenção e regulação emocional, sempre em conjunto com acompanhamento profissional." },
+  { q: "Qual roupa meu filho deve usar?", a: "Roupas confortáveis que permitam movimento — calça legging, shorts, camiseta. Sem sapato (praticamos descalço)." },
+  { q: "Quantas crianças por turma?", a: "Turmas pequenas, até 8 crianças, para garantir atenção individualizada." },
+  { q: "Onde fica o studio?", a: "Rua Goiás, 117, Centro, Sorocaba/SP, próximo ao coração da cidade." },
+];
+
+const turmas = [
+  {
+    faixa: "4-6 anos",
+    nome: "Yoga Mini (Pré-escola)",
+    desc: "Aulas baseadas em histórias e brincadeiras. As crianças exploram posturas como animais e elementos da natureza.",
+    num: "01",
+  },
+  {
+    faixa: "7-10 anos",
+    nome: "Yoga Kids (Fundamental I)",
+    desc: "Foco em movimentos coordenados, jogos cooperativos e início de práticas respiratórias guiadas.",
+    num: "02",
+  },
+  {
+    faixa: "11-13 anos",
+    nome: "Yoga Teen (Pré-adolescente)",
+    desc: "Equilíbrio entre movimento, respiração e introdução à meditação, para lidar com mudanças da idade.",
+    num: "03",
+  },
+];
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  ogImage={ogImage}
+  pageType="kids-landing"
+>
+  <!-- Hero específico (sem vídeo, só imagem) -->
+  <section id="hero-kids" class="kids-hero" aria-labelledby="kidsHeroTitle"
+           itemscope itemtype="https://schema.org/Service"
+           itemid="https://essenciadoyoga.com.br/#service-kids">
+    <div class="kids-hero__bg" aria-hidden="true">
+      <picture>
+        <source media="(max-width: 640px)" srcset="/images/yoga-kids-400.webp" type="image/webp" />
+        <source media="(max-width: 1024px)" srcset="/images/yoga-kids-600.webp" type="image/webp" />
+        <img src="/images/yoga-kids-900.webp"
+             alt=""
+             width="900" height="900"
+             fetchpriority="high"
+             decoding="sync" />
+      </picture>
+    </div>
+    <div class="kids-hero__overlay" aria-hidden="true"></div>
+
+    <div class="kids-hero__content">
+      <p class="kids-hero__tag">Yoga Kids em Sorocaba</p>
+      <h1 class="kids-hero__title" id="kidsHeroTitle" itemprop="name">
+        Yoga Kids: o <em>cantinho lúdico</em> para o seu filho <em>florescer</em>.
+      </h1>
+      <p class="kids-hero__desc" itemprop="description">
+        Aulas de yoga infantil em Sorocaba que estimulam concentração, criatividade e equilíbrio emocional — através do brincar, do movimento e da respiração. Para famílias do Centro, Trujillo, Campolim e região (Votorantim, Itu, Salto).
+      </p>
+      <a href="#contato" class="kids-hero__cta">Agendar aula experimental</a>
+
+      <ul class="kids-hero__features" role="list">
+        <li><span aria-hidden="true">✓</span> Turmas pequenas (até 8 crianças)</li>
+        <li><span aria-hidden="true">✓</span> Aulas lúdicas com música e histórias</li>
+        <li><span aria-hidden="true">✓</span> Professora especializada em yoga infantil</li>
+      </ul>
+    </div>
+  </section>
+
+  <main id="main">
+    <!-- Breadcrumb visível -->
+    <nav aria-label="Breadcrumb" class="breadcrumb">
+      <div class="breadcrumb__container">
+        <ol>
+          <li><a href="/">Início</a></li>
+          <li aria-current="page">Yoga Kids em Sorocaba</li>
+        </ol>
+      </div>
+    </nav>
+
+    <!-- Stats kids -->
+    <section class="kids-stats" aria-label="Yoga Kids em Números">
+      <div class="kids-stats__container">
+        <p class="kids-stats__eyebrow">Yoga Kids em Números</p>
+        <div class="kids-stats__grid">
+          <div class="kids-stats__item">
+            <p class="kids-stats__value">120+</p>
+            <p class="kids-stats__label">Crianças atendidas</p>
+          </div>
+          <div class="kids-stats__item">
+            <p class="kids-stats__value">5+</p>
+            <p class="kids-stats__label">Anos com Yoga Kids</p>
+          </div>
+          <div class="kids-stats__item">
+            <p class="kids-stats__value">3</p>
+            <p class="kids-stats__label">Faixas etárias</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <Beneficios />
+
+    <!-- Modalidades Kids por faixa etária -->
+    <section class="kids-turmas" id="turmas" aria-labelledby="turmasTitle">
+      <div class="kids-turmas__container">
+        <header class="kids-turmas__header">
+          <p class="kids-turmas__eyebrow">Por Faixa Etária</p>
+          <h2 class="kids-turmas__title" id="turmasTitle">
+            Aulas de <em>Yoga Kids</em> por faixa etária
+          </h2>
+        </header>
+        <div class="kids-turmas__grid">
+          {turmas.map((t) => (
+            <article class="kids-turmas__card"
+                     itemscope itemtype="https://schema.org/CourseInstance">
+              <figure class="kids-turmas__media">
+                <img loading="lazy" decoding="async"
+                     src="/images/yoga-kids-600.webp"
+                     srcset="/images/yoga-kids-400.webp 400w, /images/yoga-kids-600.webp 600w, /images/yoga-kids-900.webp 900w"
+                     sizes="(max-width: 640px) 100vw, 33vw"
+                     alt={`Aula de ${t.nome} em Sorocaba`}
+                     width="600" height="600" itemprop="image" />
+                <span class="kids-turmas__num" aria-hidden="true">{t.num}</span>
+              </figure>
+              <div class="kids-turmas__body">
+                <span class="kids-turmas__faixa">{t.faixa}</span>
+                <h3 class="kids-turmas__name" itemprop="name">{t.nome}</h3>
+                <p class="kids-turmas__desc" itemprop="description">{t.desc}</p>
+                <meta itemprop="courseMode" content="onsite" />
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Aula Experimental -->
+    <section class="kids-cta" aria-label="Agendar aula experimental de Yoga Kids">
+      <div class="kids-cta__bg" aria-hidden="true"></div>
+      <div class="kids-cta__overlay" aria-hidden="true"></div>
+      <div class="kids-cta__container">
+        <div class="kids-cta__inner">
+          <p class="kids-cta__eyebrow">Aula Experimental Gratuita</p>
+          <h2 class="kids-cta__title">
+            Quer ver seu filho <em>brilhar</em> com o yoga?
+          </h2>
+          <p class="kids-cta__text">
+            Agende uma aula experimental gratuita e descubra como o yoga pode transformar a rotina da sua família. Atendemos famílias do Centro, Trujillo, Campolim e bairros próximos.
+          </p>
+          <a href="#contato" class="kids-cta__btn">
+            <span>Agendar pelo WhatsApp</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- O que é Yoga Kids -->
+    <section class="kids-oque" id="o-que-e-yoga-kids" aria-labelledby="oQueTitle">
+      <div class="kids-oque__container">
+        <header class="kids-oque__header">
+          <p class="kids-oque__eyebrow">A Prática</p>
+          <h2 class="kids-oque__title" id="oQueTitle">
+            O que é <em>Yoga Kids</em>?
+          </h2>
+        </header>
+        <div class="kids-oque__body">
+          <p class="lead-paragraph">
+            O Yoga Kids é uma adaptação lúdica e segura do yoga tradicional, pensada especialmente para crianças. Cada postura vira uma brincadeira, cada respiração vira um jogo, e a meditação se transforma em um momento de visualização guiada.
+          </p>
+          <p>
+            No <strong>Essência do Yoga</strong>, acreditamos que ensinar yoga desde cedo é dar à criança ferramentas que ela vai carregar para a vida toda — autocontrole, presença e amor próprio.
+          </p>
+          <blockquote class="kids-oque__quote">
+            "Uma criança que aprende a respirar com consciência aprende a viver com mais leveza."
+          </blockquote>
+          <div class="kids-oque__tags" role="list">
+            <span class="kids-oque__tag" role="listitem">Lúdico</span>
+            <span class="kids-oque__tag" role="listitem">Seguro</span>
+            <span class="kids-oque__tag" role="listitem">Transformador</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Kids -->
+    <Faq
+      eyebrow="Dúvidas Frequentes"
+      title='Perguntas frequentes sobre <em>Yoga Kids</em> em Sorocaba'
+      questions={faqKids}
+    />
+  </main>
+
+  <Footer />
+  <FloatingButton />
+</BaseLayout>
+
+<style>
+  /* ===== HERO KIDS ===== */
+  .kids-hero {
+    position: relative;
+    min-height: 75vh;
+    min-height: 75dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #1a2820;
+    color: #fff;
+    padding: clamp(3rem, 2.5rem + 2vw, 5rem) clamp(1.5rem, 1rem + 3vw, 4rem);
+    scroll-margin-top: 0;
+  }
+  .kids-hero__bg { position: absolute; inset: 0; z-index: 1; }
+  .kids-hero__bg picture, .kids-hero__bg img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+    filter: brightness(.45) saturate(1.05);
+  }
+  .kids-hero__overlay {
+    position: absolute; inset: 0; z-index: 2;
+    background: linear-gradient(180deg, rgba(15, 46, 30, 0.55) 0%, rgba(15, 46, 30, 0.85) 100%);
+  }
+  .kids-hero__content {
+    position: relative; z-index: 5;
+    max-width: 760px; width: 100%;
+    text-align: center;
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: clamp(0.9rem, 2vh, 1.4rem);
+  }
+  .kids-hero__tag {
+    display: inline-flex;
+    padding: 7px 20px;
+    background: rgba(190, 235, 172, 0.15);
+    border: 1px solid rgba(190, 235, 172, 0.45);
+    border-radius: 999px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #BEEBAC;
+    margin: 0;
+  }
+  .kids-hero__title {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(2rem, 1.4rem + 3vw, 3.6rem);
+    line-height: 1.08;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .kids-hero__title em {
+    font-style: italic;
+    color: #BEEBAC;
+  }
+  .kids-hero__desc {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.1rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .kids-hero__cta {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px;
+    padding: 14px 32px;
+    background: #fff;
+    color: #154A30 !important;
+    border-radius: 999px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    text-decoration: none;
+    transition: all .35s ease;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+    margin-top: 0.5rem;
+  }
+  .kids-hero__cta:hover {
+    background: #BEEBAC;
+    transform: translateY(-3px);
+  }
+  .kids-hero__features {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .kids-hero__features li {
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .kids-hero__features li span {
+    color: #BEEBAC;
+    font-weight: 700;
+  }
+
+  /* ===== BREADCRUMB ===== */
+  .breadcrumb {
+    padding: 12px 0;
+    background: #faf7f2;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.85rem;
+  }
+  .breadcrumb__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 1rem + 3vw, 4rem);
+  }
+  .breadcrumb ol {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .breadcrumb li + li::before {
+    content: "›";
+    margin-right: 0.5rem;
+    opacity: 0.5;
+  }
+  .breadcrumb a {
+    color: #154A30;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease;
+  }
+  .breadcrumb a:hover { border-bottom-color: #154A30; }
+  .breadcrumb [aria-current] { color: #46514A; }
+
+  /* ===== STATS KIDS ===== */
+  .kids-stats {
+    background: #0F1A12;
+    color: #fff;
+    padding: clamp(3rem, 2.5rem + 2vw, 5rem) 0;
+  }
+  .kids-stats__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 1rem + 3vw, 4rem);
+    text-align: center;
+  }
+  .kids-stats__eyebrow {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E0A8EE;
+    margin: 0 0 clamp(1.5rem, 1.25rem + 1vw, 2.5rem);
+  }
+  .kids-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 0.5rem + 2vw, 3rem);
+  }
+  .kids-stats__item { contain: layout style; }
+  .kids-stats__value {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(2rem, 1.4rem + 3vw, 4rem);
+    font-weight: 300;
+    line-height: 1;
+    color: #BEEBAC;
+    margin: 0 0 0.65rem;
+    letter-spacing: -0.03em;
+  }
+  .kids-stats__label {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-style: italic;
+    font-size: clamp(0.85rem, 0.8rem + 0.3vw, 1.15rem);
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0;
+  }
+
+  /* ===== TURMAS POR FAIXA ETÁRIA ===== */
+  .kids-turmas {
+    padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0;
+    background: #fff;
+    scroll-margin-top: 80px;
+  }
+  .kids-turmas__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 1rem + 3vw, 4rem);
+  }
+  .kids-turmas__header {
+    text-align: center;
+    margin-bottom: clamp(2rem, 1.5rem + 2vw, 3.5rem);
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .kids-turmas__eyebrow {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #CC6BE6;
+    margin: 0 0 1rem;
+  }
+  .kids-turmas__title {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #18241C;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .kids-turmas__title em {
+    font-style: italic;
+    color: #1D603E;
+  }
+  .kids-turmas__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+  }
+  .kids-turmas__card {
+    background: #EAF7E4;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    contain: layout style;
+    transition: transform 500ms ease, box-shadow 500ms ease;
+  }
+  .kids-turmas__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 48px rgba(15, 26, 18, 0.12);
+  }
+  .kids-turmas__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin: 0;
+  }
+  .kids-turmas__media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .kids-turmas__num {
+    position: absolute;
+    top: 12px; left: 12px;
+    padding: 0.3rem 0.7rem;
+    background: rgba(15, 26, 18, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 999px;
+    color: #fff;
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+  }
+  .kids-turmas__body {
+    padding: clamp(1.25rem, 1rem + 0.5vw, 1.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .kids-turmas__faixa {
+    display: inline-block;
+    width: max-content;
+    padding: 4px 10px;
+    background: #fff;
+    border: 1px solid rgba(29, 96, 62, 0.2);
+    border-radius: 999px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #154A30;
+  }
+  .kids-turmas__name {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem);
+    font-weight: 400;
+    color: #18241C;
+    margin: 0;
+    line-height: 1.2;
+  }
+  .kids-turmas__desc {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #46514A;
+    margin: 0;
+  }
+  @media (max-width: 860px) {
+    .kids-turmas__grid { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+
+  /* ===== CTA ===== */
+  .kids-cta {
+    position: relative;
+    padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0;
+    overflow: hidden;
+    background: #0a1f10;
+  }
+  .kids-cta__bg {
+    position: absolute; inset: 0;
+    background-image: url('/images/cta-bg.webp');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .kids-cta__overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(180deg, rgba(10, 31, 16, 0.85), rgba(21, 74, 48, 0.80) 50%, rgba(10, 31, 16, 0.88));
+  }
+  .kids-cta__container {
+    position: relative; z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 1rem + 3vw, 4rem);
+    display: flex;
+    justify-content: center;
+  }
+  .kids-cta__inner {
+    max-width: 720px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .kids-cta__eyebrow {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #E0A8EE;
+    margin: 0;
+  }
+  .kids-cta__eyebrow::before {
+    content: ""; width: 28px; height: 1px; background: #E0A8EE;
+  }
+  .kids-cta__title {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(1.85rem, 1.4rem + 2vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: #fff;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .kids-cta__title em {
+    font-style: italic;
+    color: #BEEBAC;
+  }
+  .kids-cta__text {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.92);
+    max-width: 560px;
+    margin: 0;
+  }
+  .kids-cta__btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 14px 32px;
+    background: #fff;
+    color: #154A30 !important;
+    border-radius: 999px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 400ms ease;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+    margin-top: 0.5rem;
+  }
+  .kids-cta__btn:hover {
+    background: #BEEBAC;
+    transform: translateY(-3px);
+  }
+  .kids-cta__btn svg { width: 15px; height: 15px; stroke: #154A30; }
+
+  /* ===== O QUE É YOGA KIDS ===== */
+  .kids-oque {
+    padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0;
+    background: #fff;
+    scroll-margin-top: 80px;
+  }
+  .kids-oque__container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 clamp(1.5rem, 1rem + 3vw, 4rem);
+  }
+  .kids-oque__header { text-align: center; margin-bottom: 1.5rem; }
+  .kids-oque__eyebrow {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #CC6BE6;
+    margin: 0 0 1rem;
+  }
+  .kids-oque__title {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: #18241C;
+    margin: 0;
+  }
+  .kids-oque__title em { font-style: italic; color: #1D603E; }
+  .kids-oque__body {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #46514A;
+    text-align: center;
+  }
+  .kids-oque__body p { margin: 0 0 1.15rem; }
+  .kids-oque__body strong { color: #154A30; }
+  .kids-oque__quote {
+    margin: 2rem 0 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: #D6F2CB;
+    border-left: 3px solid #1D603E;
+    border-radius: 16px;
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem);
+    color: #154A30;
+    line-height: 1.6;
+  }
+  .kids-oque__tags {
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .kids-oque__tag {
+    padding: 0.6rem 1.1rem;
+    background: #fff;
+    border: 1px solid rgba(24, 36, 28, 0.1);
+    border-radius: 999px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1D603E;
+  }
+</style>
