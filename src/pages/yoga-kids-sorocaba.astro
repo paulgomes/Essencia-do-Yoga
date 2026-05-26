@@ -86,16 +86,6 @@ const turmas = [
   </section>
 
   <main id="main">
-    <!-- Breadcrumb visível -->
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-      <div class="breadcrumb__container">
-        <ol>
-          <li><a href="/">Início</a></li>
-          <li aria-current="page">Yoga Kids em Sorocaba</li>
-        </ol>
-      </div>
-    </nav>
-
     <!-- Stats kids -->
     <section class="kids-stats" aria-label="Yoga Kids em Números">
       <div class="kids-stats__container">
@@ -324,41 +314,6 @@ const turmas = [
     color: #BEEBAC;
     font-weight: 700;
   }
-
-  /* ===== BREADCRUMB ===== */
-  .breadcrumb {
-    padding: 12px 0;
-    background: #faf7f2;
-    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
-    font-size: 0.85rem;
-  }
-  .breadcrumb__container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 clamp(1.5rem, 1rem + 3vw, 4rem);
-  }
-  .breadcrumb ol {
-    list-style: none;
-    display: flex;
-    gap: 0.5rem;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .breadcrumb li + li::before {
-    content: "›";
-    margin-right: 0.5rem;
-    opacity: 0.5;
-  }
-  .breadcrumb a {
-    color: #154A30;
-    text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 200ms ease;
-  }
-  .breadcrumb a:hover { border-bottom-color: #154A30; }
-  .breadcrumb [aria-current] { color: #46514A; }
 
   /* ===== STATS KIDS ===== */
   .kids-stats {

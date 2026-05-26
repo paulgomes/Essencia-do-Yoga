@@ -19,16 +19,14 @@ const {
       <h2 class="ey-faq__title" id="faqTitle" set:html={title} />
     </header>
 
-    <div class="ey-faq__list" role="list">
-      {questions.map((item, i) => (
-        <details class="ey-faq__item" role="listitem" name="faq-kids" open={i === 0}>
-          <summary class="ey-faq__q">
-            <span class="ey-faq__q-text">{item.q}</span>
+    <div class="ey-faq__list">
+      {questions.map((item) => (
+        <details class="ey-faq__item">
+          <summary class="ey-faq__question">
+            <span>{item.q}</span>
             <span class="ey-faq__icon" aria-hidden="true">+</span>
           </summary>
-          <div class="ey-faq__a">
-            <p>{item.a}</p>
-          </div>
+          <p class="ey-faq__answer">{item.a}</p>
         </details>
       ))}
     </div>
@@ -37,126 +35,116 @@ const {
 
 <style>
   .ey-faq {
-    --green: #1D603E;
-    --green-deep: #154A30;
-    --lime-pale: #EAF7E4;
-    --lilac: #CC6BE6;
-    --ink: #18241C;
-    --ink-soft: #46514A;
-    --line: rgba(24, 36, 28, 0.10);
-
-    --font-serif: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
-    --font-sans: 'Outfit', 'Outfit Fallback', system-ui, sans-serif;
-    --gutter: clamp(1.5rem, 1rem + 3vw, 4rem);
-    --ease: cubic-bezier(0.22, 1, 0.36, 1);
-
-    padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0;
+    padding-block: clamp(48px, 8vh, 96px);
     background: #faf7f2;
     scroll-margin-top: 80px;
   }
 
-  .ey-faq * { box-sizing: border-box; margin: 0; padding: 0; }
-
   .ey-faq__container {
-    width: 100%;
     max-width: 860px;
     margin: 0 auto;
-    padding: 0 var(--gutter);
+    padding-inline: clamp(20px, 5vw, 48px);
   }
 
   .ey-faq__header {
     text-align: center;
-    margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+    margin: 0 auto clamp(32px, 5vh, 48px);
   }
 
   .ey-faq__eyebrow {
-    font-family: var(--font-sans);
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.75rem;
     font-weight: 500;
-    font-size: 0.78rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--lilac);
-    margin: 0 0 1rem !important;
+    color: #CC6BE6;
+    margin: 0 0 16px;
+    text-align: center;
   }
 
   .ey-faq__title {
-    font-family: var(--font-serif);
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(1.75rem, 4vw, 3rem);
     font-weight: 300;
-    font-size: clamp(1.85rem, 1.4rem + 2vw, 3rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin: 0 !important;
-    text-wrap: balance;
+    line-height: 1.2;
+    margin: 0;
+    text-align: center;
+    color: #18241C;
   }
   :global(.ey-faq__title em) {
     font-style: italic;
-    color: var(--green);
+    font-weight: 500;
+    color: #154A30;
   }
 
   .ey-faq__list {
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
+    gap: 12px;
   }
 
   .ey-faq__item {
     background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 999px;
     overflow: hidden;
-    transition: border-color 250ms var(--ease);
-  }
-  .ey-faq__item[open] {
-    border-color: var(--green);
-    box-shadow: 0 8px 24px rgba(15, 26, 18, 0.06);
+    transition: border-radius 200ms ease, background 200ms ease, border-color 200ms ease;
   }
 
-  .ey-faq__q {
+  .ey-faq__item[open] {
+    border-radius: 16px;
+    border-color: rgba(21, 74, 48, 0.18);
+    background: #fff;
+  }
+
+  .ey-faq__question {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 1rem;
-    padding: 1.1rem 1.35rem;
+    gap: 16px;
+    padding: 16px 24px;
     cursor: pointer;
-    list-style: none;
-    font-family: var(--font-sans);
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.9375rem;
     font-weight: 500;
-    font-size: 1rem;
-    color: var(--green-deep);
-    line-height: 1.4;
+    color: #18241C;
+    list-style: none;
+    user-select: none;
   }
-  .ey-faq__q::-webkit-details-marker { display: none; }
-  .ey-faq__q-text { flex: 1; }
+  .ey-faq__question::-webkit-details-marker { display: none; }
 
   .ey-faq__icon {
     flex-shrink: 0;
     width: 28px;
     height: 28px;
+    border-radius: 50%;
+    background: rgba(21, 74, 48, 0.08);
+    color: #154A30;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background: var(--lime-pale);
-    color: var(--green-deep);
-    font-size: 1.2rem;
+    font-size: 16px;
     font-weight: 400;
-    transition: transform 250ms var(--ease), background 250ms var(--ease);
+    transition: transform 200ms ease, background 200ms ease, color 200ms ease;
   }
+
   .ey-faq__item[open] .ey-faq__icon {
     transform: rotate(45deg);
-    background: var(--green);
+    background: #154A30;
     color: #fff;
   }
 
-  .ey-faq__a {
-    padding: 0 1.35rem 1.35rem;
+  .ey-faq__answer {
+    padding: 0 24px 20px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #46514A;
+    margin: 0;
   }
-  .ey-faq__a p {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--ink-soft);
-    margin: 0 !important;
+
+  @media (max-width: 600px) {
+    .ey-faq__question { padding: 14px 20px; font-size: 0.875rem; }
+    .ey-faq__answer { padding: 0 20px 16px; }
   }
 </style>

@@ -9,24 +9,24 @@ const beneficios = [
 ];
 ---
 
-<section class="ey-ben" id="beneficios" aria-labelledby="beneficiosTitle">
-  <div class="ey-ben__container">
-    <header class="ey-ben__header">
-      <p class="ey-ben__eyebrow">Benefícios</p>
-      <h2 class="ey-ben__title" id="beneficiosTitle">
+<section class="ey-beneficios" id="beneficios" aria-labelledby="beneficiosTitle">
+  <div class="ey-beneficios__container">
+    <header class="ey-beneficios__header">
+      <p class="ey-beneficios__eyebrow">Benefícios</p>
+      <h2 class="ey-beneficios__title" id="beneficiosTitle">
         Benefícios do <em>Yoga para crianças</em> em Sorocaba
       </h2>
-      <p class="ey-ben__intro">
+      <p class="ey-beneficios__intro">
         A prática regular oferece ganhos que vão muito além do tatame — habilidades que acompanham seu filho por toda a vida.
       </p>
     </header>
 
-    <div class="ey-ben__grid">
+    <div class="ey-beneficios__grid">
       {beneficios.map((b) => (
-        <article class="ey-ben__card">
-          <span class="ey-ben__num" aria-hidden="true">{b.num}</span>
-          <h3 class="ey-ben__card-title">{b.titulo}</h3>
-          <p class="ey-ben__card-desc">{b.desc}</p>
+        <article class="ey-beneficios__card">
+          <p class="ey-beneficios__num">{b.num}</p>
+          <h3 class="ey-beneficios__card-title">{b.titulo}</h3>
+          <p class="ey-beneficios__card-desc">{b.desc}</p>
         </article>
       ))}
     </div>
@@ -34,127 +34,109 @@ const beneficios = [
 </section>
 
 <style>
-  .ey-ben {
-    --green: #1D603E;
-    --green-deep: #154A30;
-    --lime: #BEEBAC;
-    --lime-pale: #EAF7E4;
-    --lilac: #CC6BE6;
-    --ink: #18241C;
-    --ink-soft: #46514A;
-    --line: rgba(24, 36, 28, 0.10);
-
-    --font-serif: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
-    --font-sans: 'Outfit', 'Outfit Fallback', system-ui, sans-serif;
-    --gutter: clamp(1.5rem, 1rem + 3vw, 4rem);
-
-    padding: clamp(3.5rem, 3rem + 3vw, 6rem) 0;
-    background:
-      radial-gradient(ellipse 50% 40% at 20% 10%, rgba(190, 235, 172, 0.15), transparent 60%),
-      #fff;
+  .ey-beneficios {
+    padding-block: clamp(48px, 8vh, 96px);
+    background: #fff;
     scroll-margin-top: 80px;
   }
-  .ey-ben * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .ey-ben__container {
-    width: 100%;
+  .ey-beneficios__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--gutter);
+    padding-inline: clamp(20px, 5vw, 48px);
   }
 
-  .ey-ben__header {
+  .ey-beneficios__header {
     text-align: center;
-    margin-bottom: clamp(2rem, 1.5rem + 1.5vw, 3rem);
     max-width: 720px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto clamp(32px, 5vh, 56px);
   }
 
-  .ey-ben__eyebrow {
-    font-family: var(--font-sans);
+  .ey-beneficios__eyebrow {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.75rem;
     font-weight: 500;
-    font-size: 0.78rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--lilac);
-    margin: 0 0 1rem !important;
+    color: #CC6BE6;
+    margin: 0 0 16px;
+    text-align: center;
   }
 
-  .ey-ben__title {
-    font-family: var(--font-serif);
+  .ey-beneficios__title {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(1.75rem, 4vw, 3rem);
+    line-height: 1.2;
     font-weight: 300;
-    font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem);
-    line-height: 1.05;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    margin: 0 0 1.25rem !important;
+    margin: 0 0 16px;
+    text-align: center;
+    color: #18241C;
     text-wrap: balance;
   }
-  .ey-ben__title em {
+  .ey-beneficios__title em {
     font-style: italic;
-    color: var(--green);
+    font-weight: 500;
+    color: #154A30;
   }
 
-  .ey-ben__intro {
-    font-family: var(--font-sans);
-    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.1rem);
-    line-height: 1.7;
-    color: var(--ink-soft);
+  .ey-beneficios__intro {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.0625rem);
+    line-height: 1.65;
+    margin: 0;
+    text-align: center;
+    color: #46514A;
   }
 
-  .ey-ben__grid {
+  .ey-beneficios__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: clamp(1.25rem, 1rem + 1vw, 2rem);
+    gap: clamp(16px, 2vw, 24px);
   }
 
-  .ey-ben__card {
-    position: relative;
-    padding: clamp(1.5rem, 1.25rem + 0.5vw, 2rem);
+  .ey-beneficios__card {
+    padding: clamp(20px, 2.5vw, 28px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
     background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    transition: transform 350ms ease, box-shadow 350ms ease, border-color 350ms ease;
+    transition: transform 200ms ease, box-shadow 200ms ease, border-color 200ms ease;
     contain: layout style;
   }
-  .ey-ben__card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 40px rgba(15, 26, 18, 0.08);
-    border-color: var(--lime);
+  .ey-beneficios__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(190, 235, 172, 0.7);
   }
 
-  .ey-ben__num {
-    display: inline-block;
-    font-family: var(--font-serif);
+  .ey-beneficios__num {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
     font-style: italic;
-    font-size: 1.4rem;
-    color: var(--lilac);
-    margin-bottom: 0.5rem;
-    line-height: 1;
+    font-size: 1rem;
+    color: #CC6BE6;
+    margin: 0 0 8px;
   }
 
-  .ey-ben__card-title {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-size: clamp(1.2rem, 1.1rem + 0.4vw, 1.5rem);
-    color: var(--ink);
-    margin: 0 0 0.6rem !important;
-    line-height: 1.2;
+  .ey-beneficios__card-title {
+    font-family: 'Cormorant Garamond', 'Cormorant Fallback', 'Georgia', serif;
+    font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+    font-weight: 500;
+    margin: 0 0 8px;
+    color: #18241C;
+    line-height: 1.25;
   }
 
-  .ey-ben__card-desc {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin: 0 !important;
+  .ey-beneficios__card-desc {
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    margin: 0;
+    color: #46514A;
   }
 
-  @media (max-width: 860px) {
-    .ey-ben__grid { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 900px) {
+    .ey-beneficios__grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (max-width: 540px) {
-    .ey-ben__grid { grid-template-columns: 1fr; }
+  @media (max-width: 600px) {
+    .ey-beneficios__grid { grid-template-columns: 1fr; }
   }
 </style>
