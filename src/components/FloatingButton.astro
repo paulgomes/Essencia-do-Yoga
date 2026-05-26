@@ -9,12 +9,14 @@ const supaHost = 'ssyghxuefgfckzzbfoyk.supabase.co';
     var open=false,overlay,prefetched=false;
 
     function addHint(rel,href,co){var l=document.createElement('link');l.rel=rel;l.href=href;if(co)l.crossOrigin='anonymous';document.head.appendChild(l)}
-    addHint('preconnect','https://scrumboards.com.br',true);
-    addHint('dns-prefetch','https://scrumboards.com.br');
-    addHint('preconnect','https://'+supaHost,true);
-    addHint('dns-prefetch','https://'+supaHost);
 
-    function prefetchForm(){if(prefetched)return;prefetched=true;addHint('prefetch',formUrl)}
+    function prefetchForm(){
+      if(prefetched)return;prefetched=true;
+      // Preconnects sob demanda (não no load inicial pra não competir com LCP)
+      addHint('preconnect','https://scrumboards.com.br',true);
+      addHint('preconnect','https://'+supaHost,true);
+      addHint('prefetch',formUrl);
+    }
 
     function openModal(){
       if(open){overlay.remove();open=false;return;}
