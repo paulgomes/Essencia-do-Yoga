@@ -4,15 +4,17 @@
 
 <section id="studio" aria-labelledby="studioTitle" itemscope itemtype="https://schema.org/LocalBusiness" itemid="https://essenciadoyoga.com.br/#studio">
   <div class="studio-hero__bg" aria-hidden="true">
-    <img src="/images/yoga-sunset-poster-1920.webp"
-         srcset="/images/yoga-sunset-poster-768.webp 768w, /images/yoga-sunset-poster-1920.webp 1920w"
-         sizes="100vw"
-         alt=""
-         width="1920" height="1080"
-         fetchpriority="high"
-         decoding="sync"
-         class="studio-hero__bg-img"
-         id="hero-bg-img" />
+    <picture>
+      <source media="(max-width: 640px)" srcset="/images/yoga-sunset-poster-640.webp" type="image/webp" />
+      <source media="(max-width: 1024px)" srcset="/images/yoga-sunset-poster-1024.webp" type="image/webp" />
+      <img src="/images/yoga-sunset-poster-1920.webp"
+           alt=""
+           width="1920" height="1080"
+           fetchpriority="high"
+           decoding="sync"
+           class="studio-hero__bg-img"
+           id="hero-bg-img" />
+    </picture>
     <video class="studio-hero__bg-video" id="hero-bg-video"
            muted loop playsinline preload="none" disablepictureinpicture aria-hidden="true">
       <source data-src="/videos/yoga-sunset.mp4" type="video/mp4" />
@@ -49,12 +51,15 @@
 
   <div class="studio-hero__content">
     <div class="studio-hero__logo">
-      <img src="/images/logo.png"
-           alt="Essência do Yoga — studio de yoga em Sorocaba"
-           decoding="async"
-           fetchpriority="high"
-           width="118"
-           height="121">
+      <picture>
+        <source srcset="/images/logo.webp" type="image/webp" />
+        <img src="/images/logo-optimized.png"
+             alt="Essência do Yoga — studio de yoga em Sorocaba"
+             decoding="async"
+             fetchpriority="high"
+             width="118"
+             height="121">
+      </picture>
     </div>
 
     <p class="studio-hero__tag">Studio de Yoga em Sorocaba</p>

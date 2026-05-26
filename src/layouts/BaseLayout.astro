@@ -340,10 +340,11 @@ if (pageType !== 'home') {
   <!-- Resource hints (performance) — apenas o essencial -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- Preload critical assets (LCP) — responsive: mobile 768w, desktop 1920w -->
-  <link rel="preload" as="image" href="/images/yoga-sunset-poster-768.webp" media="(max-width: 767px)" fetchpriority="high" />
-  <link rel="preload" as="image" href="/images/yoga-sunset-poster-1920.webp" media="(min-width: 768px)" fetchpriority="high" />
-  <link rel="preload" as="image" href="/images/logo.png" fetchpriority="high" />
+  <!-- Preload critical assets (LCP) — 3 variantes responsivas + logo otimizado -->
+  <link rel="preload" as="image" href="/images/yoga-sunset-poster-640.webp" media="(max-width: 640px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/yoga-sunset-poster-1024.webp" media="(min-width: 641px) and (max-width: 1024px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/yoga-sunset-poster-1920.webp" media="(min-width: 1025px)" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/logo.webp" fetchpriority="high" />
 
   <!-- Open Graph -->
   <meta property="og:locale" content="pt_BR" />
