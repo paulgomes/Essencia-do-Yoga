@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import critters from 'astro-critters';
 
 export default defineConfig({
   site: 'https://essenciadoyoga.com.br',
@@ -19,12 +20,22 @@ export default defineConfig({
         };
       },
     }),
+    critters({
+      // Inline CSS crítico (above-the-fold) e carrega resto async
+      Critters: {
+        preload: 'swap',
+        pruneSource: false,
+        compress: false,
+        inlineFonts: false,
+      },
+    }),
   ],
   devToolbar: {
     enabled: false,
   },
   build: {
-    inlineStylesheets: 'auto',
+    // Inline TODOS os stylesheets de componentes (elimina waterfall de 3 CSS files)
+    inlineStylesheets: 'always',
   },
   compressHTML: true,
 });
