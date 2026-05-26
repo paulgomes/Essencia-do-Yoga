@@ -28,10 +28,18 @@ const ogImageWidth = ogImageWidthProp ?? (ogImageProp ? 1200 : 1600);
 const ogImageHeight = ogImageHeightProp ?? (ogImageProp ? 630 : 1600);
 const keywords = keywordsProp || 'yoga em sorocaba, yoga sorocaba, studio de yoga em sorocaba, aulas de yoga sorocaba, hatha yoga sorocaba, vinyasa sorocaba, yoga kids sorocaba, yoga mamãe e bebê sorocaba, yoga centro sorocaba, essência do yoga';
 
-// Variantes mais curtas pra OG/Twitter (que truncam em ~60 chars no title e ~125-150 no description)
-const ogTitle = 'Yoga em Sorocaba | Essência do Yoga';
-const ogDescription = 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis. Hatha, Vinyasa, Yoga Kids e Mamãe & Bebê.';
-const twitterDescription = 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis.';
+// OG/Twitter: usa title e description próprios da página por padrão.
+// Home usa versões mais curtas (hardcoded) porque o title completo tem 56 chars.
+const isHome = pageType === 'home';
+const ogTitle = isHome
+  ? 'Yoga em Sorocaba | Essência do Yoga'
+  : title;
+const ogDescription = isHome
+  ? 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis. Hatha, Vinyasa, Yoga Kids e Mamãe & Bebê.'
+  : description;
+const twitterDescription = isHome
+  ? 'Studio de Yoga em Sorocaba no Centro. Turmas pequenas, professora certificada e horários flexíveis.'
+  : description;
 const ogImageAlt = 'Studio Essência do Yoga — Yoga em Sorocaba no Centro';
 
 // Schema.org @graph consolidado — todas entidades conectadas via @id
