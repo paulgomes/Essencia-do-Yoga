@@ -220,6 +220,7 @@
     display: flex;
     flex-direction: column;
     transition: transform 600ms var(--ease), box-shadow 600ms var(--ease);
+    contain: layout style;
   }
   .ey-mod-card:hover {
     transform: translateY(-5px);
@@ -318,13 +319,15 @@
     position: absolute;
     bottom: -2px;
     left: 0;
-    width: 0;
+    width: calc(100% - 1.5rem);
     height: 1px;
     background: var(--green);
-    transition: width 400ms var(--ease);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 400ms var(--ease);
   }
   .ey-mod-card__link:hover::before {
-    width: calc(100% - 1.5rem);
+    transform: scaleX(1);
   }
 
   .ey-mod .ey-mod-reveal {
