@@ -53,33 +53,39 @@ const supaHost = 'ssyghxuefgfckzzbfoyk.supabase.co';
       open=true;
     }
 
-    var btn=document.createElement('div');
-    btn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Fale Conosco';
-    btn.style.cssText='position:fixed;bottom:20px;right:20px;background:#0d9488;color:#ffffff;padding:14px 24px;border-radius:50px;cursor:pointer;font-family:sans-serif;font-size:15px;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:9999;display:flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;';
-    btn.onmouseenter=function(){btn.style.transform='scale(1.05)';btn.style.boxShadow='0 6px 20px rgba(0,0,0,.25)';prefetchForm()};
-    btn.onmouseleave=function(){btn.style.transform='scale(1)';btn.style.boxShadow='0 4px 14px rgba(0,0,0,.18)'};
-    btn.addEventListener('touchstart',prefetchForm,{passive:true,once:true});
-    btn.onclick=openModal;
+    function init(){
+      var btn=document.createElement('div');
+      btn.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg> Fale Conosco';
+      btn.style.cssText='position:fixed;bottom:20px;right:20px;background:#0d9488;color:#ffffff;padding:14px 24px;border-radius:50px;cursor:pointer;font-family:sans-serif;font-size:15px;font-weight:500;box-shadow:0 4px 14px rgba(0,0,0,.18);z-index:9999;display:flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;';
+      btn.onmouseenter=function(){btn.style.transform='scale(1.05)';btn.style.boxShadow='0 6px 20px rgba(0,0,0,.25)';prefetchForm()};
+      btn.onmouseleave=function(){btn.style.transform='scale(1)';btn.style.boxShadow='0 4px 14px rgba(0,0,0,.18)'};
+      btn.addEventListener('touchstart',prefetchForm,{passive:true,once:true});
+      btn.onclick=openModal;
 
-    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){prefetchForm();io.disconnect()}},{threshold:0});io.observe(btn)}
+      if('IntersectionObserver' in window){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){prefetchForm();io.disconnect()}},{threshold:0});io.observe(btn)}
 
-    document.addEventListener('click',function(e){
-      var a=e.target.closest&&e.target.closest('a[href="#contato"], a[href$="#contato"]');
-      if(!a)return;
-      e.preventDefault();
-      if(!open)openModal();
-    });
+      document.addEventListener('click',function(e){
+        var a=e.target.closest&&e.target.closest('a[href="#contato"], a[href$="#contato"]');
+        if(!a)return;
+        e.preventDefault();
+        if(!open)openModal();
+      });
 
-    document.addEventListener('mouseover',function(e){
-      var a=e.target.closest&&e.target.closest('a[href="#contato"], a[href$="#contato"]');
-      if(a)prefetchForm();
-    });
+      document.addEventListener('mouseover',function(e){
+        var a=e.target.closest&&e.target.closest('a[href="#contato"], a[href$="#contato"]');
+        if(a)prefetchForm();
+      });
 
-    if(window.location.hash==='#contato'){openModal();}
+      var style=document.createElement('style');
+      style.textContent='@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes scPulse{0%,100%{opacity:1}50%{opacity:.5}}.sc-pulse{background:#e2e8f0;animation:scPulse 2s ease-in-out infinite}@media(max-width:480px){.sc-modal{max-height:none!important;height:92dvh!important;width:100%!important;border-radius:14px 14px 0 0!important;align-self:flex-end}}@media(min-width:481px) and (max-width:768px){.sc-modal{width:90%!important;max-width:460px!important}}@media(min-width:769px){.sc-modal{max-width:520px!important;height:80dvh!important;max-height:720px!important}}';
+      document.head.appendChild(style);
+      document.body.appendChild(btn);
+    }
 
-    var style=document.createElement('style');
-    style.textContent='@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@keyframes scPulse{0%,100%{opacity:1}50%{opacity:.5}}.sc-pulse{background:#e2e8f0;animation:scPulse 2s ease-in-out infinite}@media(max-width:480px){.sc-modal{max-height:none!important;height:92dvh!important;width:100%!important;border-radius:14px 14px 0 0!important;align-self:flex-end}}@media(min-width:481px) and (max-width:768px){.sc-modal{width:90%!important;max-width:460px!important}}@media(min-width:769px){.sc-modal{max-width:520px!important;height:80dvh!important;max-height:720px!important}}';
-    document.head.appendChild(style);
-    document.body.appendChild(btn);
+    /* Caso de borda: usuário entrou direto em /#contato — abrir imediatamente */
+    if(window.location.hash==='#contato'){ init(); openModal(); }
+    /* Caso normal: adiar pra liberar caminho crítico (LCP/FCP) */
+    else if('requestIdleCallback' in window){ requestIdleCallback(init, { timeout: 2000 }); }
+    else { setTimeout(init, 1200); }
   })();
 </script>
