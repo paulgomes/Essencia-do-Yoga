@@ -409,11 +409,34 @@ if (pageType !== 'home') {
   <script type="application/ld+json" set:html={JSON.stringify(graphSchema)} />
 </head>
 <body>
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
   <slot />
 </body>
 </html>
 
 <style is:global>
+  /* Skip link — acessibilidade WCAG 2.4.1 */
+  .skip-link {
+    position: absolute;
+    top: -48px;
+    left: 8px;
+    z-index: 10000;
+    padding: 12px 20px;
+    background: #154A30;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0 0 8px 8px;
+    font-family: 'Outfit', 'Outfit Fallback', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    transition: top 200ms ease;
+  }
+  .skip-link:focus {
+    top: 0;
+    outline: 3px solid #BEEBAC;
+    outline-offset: 2px;
+  }
+
   /* Fallbacks ajustados (size-adjust) pra evitar CLS no font swap */
   @font-face {
     font-family: 'Outfit Fallback';
