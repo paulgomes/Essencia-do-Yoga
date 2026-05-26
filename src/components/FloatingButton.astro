@@ -85,7 +85,12 @@ const supaHost = 'ssyghxuefgfckzzbfoyk.supabase.co';
     /* Caso de borda: usuário entrou direto em /#contato — abrir imediatamente */
     if(window.location.hash==='#contato'){ init(); openModal(); }
     /* Caso normal: adiar pra liberar caminho crítico (LCP/FCP) */
-    else if('requestIdleCallback' in window){ requestIdleCallback(init, { timeout: 2000 }); }
-    else { setTimeout(init, 1200); }
+    else if('requestIdleCallback' in window){
+      requestIdleCallback(init, { timeout: 3000 });
+    } else if(document.readyState === 'complete'){
+      setTimeout(init, 1000);
+    } else {
+      window.addEventListener('load', function(){ setTimeout(init, 1000); });
+    }
   })();
 </script>
