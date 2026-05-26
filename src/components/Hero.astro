@@ -28,7 +28,8 @@
       var isDesktop = window.matchMedia('(min-width: 769px)').matches;
       var conn = navigator.connection;
       var slow = conn && (conn.saveData || /(2g|slow-2g)/.test(conn.effectiveType || ''));
-      if (!isDesktop || slow) return;
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!isDesktop || slow || reducedMotion) return;
       function loadHeroVideo(){
         var v = document.getElementById('hero-bg-video');
         var img = document.getElementById('hero-bg-img');
