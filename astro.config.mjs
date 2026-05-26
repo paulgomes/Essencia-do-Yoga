@@ -9,18 +9,31 @@ export default defineConfig({
     sitemap({
       filter: (page) => [
         'https://essenciadoyoga.com.br/',
+        'https://essenciadoyoga.com.br/aulas-de-yoga-sorocaba',
         'https://essenciadoyoga.com.br/yoga-kids-sorocaba',
+        'https://essenciadoyoga.com.br/yoga-sorocaba-santa-rosalia',
+        'https://essenciadoyoga.com.br/yoga-sorocaba-campolim',
         'https://essenciadoyoga.com.br/politica-de-privacidade',
       ].includes(page),
       serialize(item) {
         const lastmod = new Date().toISOString();
-        if (item.url === 'https://essenciadoyoga.com.br/') {
-          return { ...item, changefreq: 'monthly', priority: 1.0, lastmod };
-        }
-        if (item.url === 'https://essenciadoyoga.com.br/yoga-kids-sorocaba') {
-          return { ...item, changefreq: 'monthly', priority: 0.9, lastmod };
-        }
-        return { ...item, changefreq: 'yearly', priority: 0.3, lastmod };
+        const priorities = {
+          'https://essenciadoyoga.com.br/': 1.0,
+          'https://essenciadoyoga.com.br/aulas-de-yoga-sorocaba': 0.9,
+          'https://essenciadoyoga.com.br/yoga-kids-sorocaba': 0.9,
+          'https://essenciadoyoga.com.br/yoga-sorocaba-santa-rosalia': 0.8,
+          'https://essenciadoyoga.com.br/yoga-sorocaba-campolim': 0.8,
+          'https://essenciadoyoga.com.br/politica-de-privacidade': 0.3,
+        };
+        const changefreqMap = {
+          'https://essenciadoyoga.com.br/politica-de-privacidade': 'yearly',
+        };
+        return {
+          ...item,
+          changefreq: changefreqMap[item.url] || 'monthly',
+          priority: priorities[item.url] ?? 0.5,
+          lastmod,
+        };
       },
     }),
     critters({

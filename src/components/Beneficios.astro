@@ -1,5 +1,12 @@
 ---
-const beneficios = [
+export interface Props {
+  eyebrow?: string;
+  title?: string;
+  intro?: string;
+  items?: Array<{ num: string; titulo: string; desc: string }>;
+}
+
+const defaultItems = [
   { num: "01", titulo: "Concentração", desc: "Práticas de respiração e foco que ajudam no rendimento escolar e na atenção." },
   { num: "02", titulo: "Autoestima", desc: "Posturas que fortalecem o corpo trazem confiança e consciência corporal." },
   { num: "03", titulo: "Controle emocional", desc: "Ferramentas simples para identificar e regular sentimentos como raiva e ansiedade." },
@@ -7,22 +14,25 @@ const beneficios = [
   { num: "05", titulo: "Coordenação motora", desc: "Movimentos e equilíbrio que desenvolvem habilidades físicas essenciais." },
   { num: "06", titulo: "Convivência", desc: "Aulas em grupo que ensinam respeito, empatia e cooperação." },
 ];
+
+const {
+  eyebrow = "Benefícios",
+  title = "Benefícios do <em>Yoga para crianças</em> em Sorocaba",
+  intro = "A prática regular oferece ganhos que vão muito além do tatame — habilidades que acompanham seu filho por toda a vida.",
+  items = defaultItems,
+} = Astro.props;
 ---
 
 <section class="ey-beneficios" id="beneficios" aria-labelledby="beneficiosTitle">
   <div class="ey-beneficios__container">
     <header class="ey-beneficios__header">
-      <p class="ey-beneficios__eyebrow">Benefícios</p>
-      <h2 class="ey-beneficios__title" id="beneficiosTitle">
-        Benefícios do <em>Yoga para crianças</em> em Sorocaba
-      </h2>
-      <p class="ey-beneficios__intro">
-        A prática regular oferece ganhos que vão muito além do tatame — habilidades que acompanham seu filho por toda a vida.
-      </p>
+      <p class="ey-beneficios__eyebrow">{eyebrow}</p>
+      <h2 class="ey-beneficios__title" id="beneficiosTitle" set:html={title} />
+      <p class="ey-beneficios__intro">{intro}</p>
     </header>
 
     <div class="ey-beneficios__grid">
-      {beneficios.map((b) => (
+      {items.map((b) => (
         <article class="ey-beneficios__card">
           <p class="ey-beneficios__num">{b.num}</p>
           <h3 class="ey-beneficios__card-title">{b.titulo}</h3>

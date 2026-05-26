@@ -21,7 +21,10 @@
 ## Páginas
 
 - [Home](https://essenciadoyoga.com.br/): página única com hero, modalidades, sobre a professora, CTA de aula experimental, "O que é Yoga" e contato.
-- [Yoga Kids em Sorocaba](https://essenciadoyoga.com.br/yoga-kids-sorocaba): landing dedicada às aulas de yoga infantil (4 a 13 anos), com 3 faixas etárias (Mini/Kids/Teen), benefícios, FAQ específica e CTA para aula experimental gratuita.
+- [Aulas de Yoga em Sorocaba](https://essenciadoyoga.com.br/aulas-de-yoga-sorocaba): estilos oferecidos (Hatha, Vinyasa, Meditação & Pranayama), benefícios, horários e como começar.
+- [Yoga Kids em Sorocaba](https://essenciadoyoga.com.br/yoga-kids-sorocaba): aulas de yoga infantil (4 a 13 anos) com 3 faixas etárias (Mini/Kids/Teen).
+- [Yoga em Sorocaba próximo a Santa Rosália](https://essenciadoyoga.com.br/yoga-sorocaba-santa-rosalia): studio no Centro acessível para moradores de Santa Rosália (~10 min de carro).
+- [Yoga em Sorocaba próximo ao Campolim](https://essenciadoyoga.com.br/yoga-sorocaba-campolim): studio no Centro acessível para quem mora ou trabalha no Campolim (~12 min).
 - [Política de Privacidade](https://essenciadoyoga.com.br/politica-de-privacidade): conformidade LGPD — coleta, uso, compartilhamento, direitos do titular.
 
 ## Recursos para crawlers / IA
