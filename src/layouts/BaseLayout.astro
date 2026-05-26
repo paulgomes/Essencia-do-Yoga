@@ -493,6 +493,17 @@ if (pageType === 'kids-landing') {
 </html>
 
 <style is:global>
+  /* Design tokens — backgrounds intercalados (zebra) e cores em superfícies escuras */
+  :root {
+    --bg-light-1: #FFFFFF;
+    --bg-light-2: #FAF7F2;
+    --bg-light-3: #F4EFE8;
+    --bg-dark-1: #0F3A24;
+    --text-on-dark: #F4EFE8;
+    --text-on-dark-muted: #C9D6CD;
+    --accent-on-dark: #E8C9D6;
+  }
+
   /* Fallbacks ajustados (size-adjust) pra evitar CLS no font swap */
   @font-face {
     font-family: 'Outfit Fallback';
